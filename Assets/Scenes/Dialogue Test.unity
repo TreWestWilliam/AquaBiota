@@ -344,6 +344,7 @@ GameObject:
   - component: {fileID: 388556436}
   - component: {fileID: 388556438}
   - component: {fileID: 388556437}
+  - component: {fileID: 388556439}
   m_Layer: 5
   m_Name: Dialogue Box
   m_TagString: Untagged
@@ -411,6 +412,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388556435}
   m_CullTransparentMesh: 1
+--- !u!95 &388556439
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388556435}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 897252b767d108c43b5af34ee5f5b36f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &482867334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1634,6 +1657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 772277377}
   dialogueText: {fileID: 184261103}
+  animator: {fileID: 388556439}
 --- !u!1 &2147086801
 GameObject:
   m_ObjectHideFlags: 0
