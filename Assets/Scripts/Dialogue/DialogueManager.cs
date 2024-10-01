@@ -14,12 +14,17 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> names;
 
     private bool inDialogue;
+    private bool printingText;
+    private string currentSentence;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         sentences = new Queue<string>();
         names = new Queue<string>();
+
+        inDialogue = false;
+        printingText = false;
     }
 
     private void Update()
@@ -50,6 +55,14 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        if(printingText)
+        {
+            StopAllCoroutines();
+            dialogueText.text = currentSentence;
+            printingText = false;
+            return;
+        }
+
         if(sentences.Count <= 0)
         {
             EndDialogue();
@@ -58,6 +71,7 @@ public class DialogueManager : MonoBehaviour
 
         string sentence = sentences.Dequeue();
         string name = names.Dequeue();
+        currentSentence = sentence;
         
         StopAllCoroutines();
         nameText.text = name;
@@ -66,13 +80,14 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator TypeSentence(string sentence)
     {
+        printingText = true;
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return null;
+            yield return new WaitForSeconds(0.015f);
         }
-        Debug.Log("Done printing sentence");
+        printingText = false;
     }
 
     void EndDialogue()
