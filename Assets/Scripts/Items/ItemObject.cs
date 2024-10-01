@@ -14,6 +14,8 @@ public class ItemObject : MonoBehaviour, InteractableObject
 
     public InventoryItem inventoryItem;
 
+    public string interactDescription = "Pick Up";
+
     public float weight
     {
         get
@@ -78,12 +80,26 @@ public class ItemObject : MonoBehaviour, InteractableObject
         }
     }
 
+    public string getInteractText()
+    {
+        return interactDescription + "\n" + itemData.itemName;
+    }
+
+    public Vector3 getPosition()
+    {
+        return transform.position;
+    }
+
     public void beginInteraction(Player player)
     {
         player.openInventory(inventoryItem);
     }
 
-    public void endInteraction(Player player)
+    public void endInteraction(Player player, bool confirmed)
     {
+        if(confirmed)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

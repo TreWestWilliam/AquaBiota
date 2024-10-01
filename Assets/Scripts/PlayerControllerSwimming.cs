@@ -1,10 +1,14 @@
 /// Player Controller Swimming by Hachiski
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
+using UnityEngine.InputSystem.Switch;
 using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerControllerSwimming : MonoBehaviour
 {
+    public Player player;
+
     [Header("Player Variables")]
     public PlayerInput _PlayerInput;
     public Rigidbody _Rigidbody;
@@ -44,8 +48,6 @@ public class PlayerControllerSwimming : MonoBehaviour
         PlayerCamera.transform.position += PlayerCamera.transform.right * CameraInput.x * Time.deltaTime + PlayerCamera.transform.up * CameraInput.y * Time.deltaTime;
         PlayerCamera.transform.LookAt(transform);
         PlayerCamera.transform.position = transform.position - PlayerCamera.transform.forward * CameraDistance;
-
-
     }
     // We may wish to adjust the forward momentum gain in the future since it's quite significant
     public void SwimUp(CallbackContext callbackContext) 
@@ -59,6 +61,37 @@ public class PlayerControllerSwimming : MonoBehaviour
         _Rigidbody.AddForce(-transform.up *VerticalMovespeed + (transform.forward * SwimBoostSpeed));
     }
 
+    public void Interact(CallbackContext callbackContext)
+    {
+        if(callbackContext.started)
+        {
+            player.Interact();
+        }
+    }
+
+    public void onControlsChanged(PlayerInput input)
+    {
+        if(input.currentControlScheme.Equals("Gamepad"))
+        {
+            InputDevice device = input.GetDevice<InputDevice>();
+            if(device is DualShockGamepad)
+            {
+                player.setControllerUI(controllerType.PlayStation);
+            }
+            else if(device is SwitchProControllerHID)
+            {
+                player.setControllerUI(controllerType.Switch);
+            }
+            else
+            {
+                player.setControllerUI(controllerType.xBox);
+            }
+        }
+        else
+        {
+            player.setControllerUI(controllerType.MouseAndKeyboard);
+        }
+    }
 
     //These functions were from testing, didn't work out since it only moved whenver the controller changed directions
     public void Move(CallbackContext callbackContext) 

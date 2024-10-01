@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb64caf36db290459f19a3ff6eb1727, type: 3}
+  m_Name: InputUIPrompts
+  m_EditorClassIdentifier: 
+  buttonSprites:
+  - {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  mouseAndKeyboard:
+    interact:
+      buttonSprite: 0
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: E
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+    swimUp:
+      buttonSprite: 0
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: Shift
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+    swimDown:
+      buttonSprite: 0
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: Ctrl
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+    pause:
+      buttonSprite: 0
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: Esc
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+    inventory:
+      buttonSprite: 0
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: 
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+  xBox:
+    interact:
+      buttonSprite: 1
+      spriteColor: {r: 1, g: 0.91456765, b: 0, a: 0.78431374}
+      buttonLabel: Y
+      labelColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+    swimUp:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: X
+      labelColor: {r: 0, g: 0.5424838, b: 1, a: 0.78431374}
+    swimDown:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: A
+      labelColor: {r: 0.17923284, g: 1, b: 0, a: 0.78431374}
+    pause:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: 
+      labelColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+    inventory:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: B
+      labelColor: {r: 1, g: 0, b: 0, a: 0.78431374}
+  PlayStation:
+    interact:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: ^
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+    swimUp:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: "\u25A1"
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+    swimDown:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: X
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+    pause:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: 
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+    inventory:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: O
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+  Switch:
+    interact:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: X
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+    swimUp:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: Y
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+    swimDown:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: B
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+    pause:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: 
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+    inventory:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: A
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
