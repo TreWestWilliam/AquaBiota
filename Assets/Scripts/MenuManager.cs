@@ -116,7 +116,7 @@ public class MenuManager : MonoBehaviour
 
     public void openPauseMenu()
     {
-        Debug.Log("Opening pause menu by " + playerInput.currentActionMap.name + ".");
+        //Debug.Log("Opening pause menu by " + playerInput.currentActionMap.name + ".");
         if(!isPaused)
         {
             isPaused = true;
@@ -134,7 +134,7 @@ public class MenuManager : MonoBehaviour
 
     public void closePauseMenu()
     {
-        Debug.Log("Closing pause menu by " + playerInput.currentActionMap.name + ".");
+        //Debug.Log("Closing pause menu by " + playerInput.currentActionMap.name + ".");
         if(isPaused)
         {
             pauseMenu.gameObject.SetActive(false);

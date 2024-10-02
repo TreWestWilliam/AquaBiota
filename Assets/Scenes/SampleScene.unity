@@ -11520,9 +11520,9 @@ MonoBehaviour:
   waveSpread: 6
   waveScale: 3
   waveSpeed: 1
-  waveArea: 2
-  waveSize: 25
-  waveSubdivisions: 50
+  waveArea: 0
+  waveSize: 100
+  waveSubdivisions: 200
   wavePrefab: {fileID: 1199970365982308081, guid: 2be096352131665408c823c1b1b3809a, type: 3}
   surface: []
 --- !u!4 &965958909
