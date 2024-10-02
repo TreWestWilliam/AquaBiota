@@ -9,6 +9,13 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+/[Pp]roject[Ss]ettings/[Pp]ackages/com.unity.polybrush/
+/[Pp]roject[Ss]ettings/[Pp]ackages/com.unity.probruilder/
+/ProjectSettings/Packages/com.unity.polybrush
+/ProjectSettings/Packages/com.unity.probuilder
+ProjectSettings/Packages/com.unity.polybrush/Settings.json
+ProjectSettings/Packages/com.unity.probuilder/Settings.json
+
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
