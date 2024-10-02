@@ -23,6 +23,7 @@ public class button
 public class controls
 {
     public button interact;
+    public button clean;
     public button swimUp;
     public button swimDown;
     public button pause;

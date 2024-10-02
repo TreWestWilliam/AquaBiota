@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor.Search;
@@ -11,6 +12,12 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform interactionCenter;
     [SerializeField] private int currentInteractable;
     [SerializeField] private List<InteractableObject> interactables;
+
+    [SerializeField] private Transform cleaningSprayOrigin;
+    [SerializeField] private ParticleSystem cleanerSpray;
+    [SerializeField] private Collider cleanerCollider;
+    [SerializeField] private float consecutiveSprayDelay;
+    private bool sprayingCleaner = false;
 
     private void Awake()
     {
@@ -31,10 +38,33 @@ public class Player : MonoBehaviour
         interactUI.setButtonAppearance(type);
     }
 
+    public void sprayCleaner()
+    {
+        if(!sprayingCleaner)
+        {
+            Debug.Log("Spray started at " + Time.time);
+            cleanerSpray.transform.position = cleaningSprayOrigin.position;
+            cleanerSpray.transform.rotation = cleaningSprayOrigin.rotation;
+            cleanerCollider.gameObject.SetActive(true);
+            sprayingCleaner = true;
+            cleanerSpray.Play();
+            StartCoroutine(sprayComplete());
+        }
+    }
+
+    private IEnumerator sprayComplete()
+    {
+        yield return new WaitForSeconds(consecutiveSprayDelay);
+        Debug.Log("Spray complete at " + Time.time);
+        cleanerCollider.gameObject.SetActive(false);
+        sprayingCleaner = false;
+    }
+
     public void openInventory(InventoryItem item)
     {
         InventoryItem[] items = { item };
         openInventory(items);
+        MenuManager.Instance.openMenu();
     }
 
     public void openInventory(InventoryItem[] items)
@@ -43,6 +73,7 @@ public class Player : MonoBehaviour
         {
             inventory.items.Add(item);
             item.itemObject.endInteraction(this, true);
+            MenuManager.Instance.closeMenu();
         }
     }
 

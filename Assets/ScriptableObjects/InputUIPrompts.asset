@@ -21,6 +21,11 @@ MonoBehaviour:
       spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
       buttonLabel: E
       labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+    clean:
+      buttonSprite: 0
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: Q
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
     swimUp:
       buttonSprite: 0
       spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
@@ -39,7 +44,7 @@ MonoBehaviour:
     inventory:
       buttonSprite: 0
       spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
-      buttonLabel: 
+      buttonLabel: I
       labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
   xBox:
     interact:
@@ -47,51 +52,61 @@ MonoBehaviour:
       spriteColor: {r: 1, g: 0.91456765, b: 0, a: 0.78431374}
       buttonLabel: Y
       labelColor: {r: 0, g: 0, b: 0, a: 0.78431374}
-    swimUp:
+    clean:
       buttonSprite: 1
       spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
       buttonLabel: X
-      labelColor: {r: 0, g: 0.5424838, b: 1, a: 0.78431374}
-    swimDown:
+      labelColor: {r: 0, g: 0.5411765, b: 1, a: 0.78431374}
+    swimUp:
       buttonSprite: 1
       spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
       buttonLabel: A
-      labelColor: {r: 0.17923284, g: 1, b: 0, a: 0.78431374}
-    pause:
-      buttonSprite: 1
-      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
-      buttonLabel: 
-      labelColor: {r: 0, g: 0, b: 0, a: 0.78431374}
-    inventory:
+      labelColor: {r: 0.18039216, g: 1, b: 0, a: 0.78431374}
+    swimDown:
       buttonSprite: 1
       spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
       buttonLabel: B
       labelColor: {r: 1, g: 0, b: 0, a: 0.78431374}
+    pause:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: Start
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+    inventory:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: Select
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
   PlayStation:
     interact:
       buttonSprite: 1
       spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
       buttonLabel: ^
       labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
-    swimUp:
+    clean:
       buttonSprite: 1
-      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      spriteColor: {r: 0, g: 0, b: 0, a: 0}
       buttonLabel: "\u25A1"
-      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
-    swimDown:
+      labelColor: {r: 1, g: 1, b: 1, a: 0}
+    swimUp:
       buttonSprite: 1
       spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
       buttonLabel: X
       labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+    swimDown:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: O
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
     pause:
       buttonSprite: 1
       spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
-      buttonLabel: 
+      buttonLabel: Start
       labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
     inventory:
       buttonSprite: 1
       spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
-      buttonLabel: O
+      buttonLabel: Select
       labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
   Switch:
     interact:
@@ -99,23 +114,28 @@ MonoBehaviour:
       spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
       buttonLabel: X
       labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
-    swimUp:
+    clean:
       buttonSprite: 1
       spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
       buttonLabel: Y
       labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
-    swimDown:
+    swimUp:
       buttonSprite: 1
       spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
       buttonLabel: B
       labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+    swimDown:
+      buttonSprite: 1
+      spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      buttonLabel: A
+      labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
     pause:
       buttonSprite: 1
       spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
-      buttonLabel: 
+      buttonLabel: +
       labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
     inventory:
       buttonSprite: 1
       spriteColor: {r: 0, g: 0, b: 0, a: 0.78431374}
-      buttonLabel: A
+      buttonLabel: '-'
       labelColor: {r: 1, g: 1, b: 1, a: 0.78431374}
