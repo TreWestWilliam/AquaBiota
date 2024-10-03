@@ -86,10 +86,15 @@ public class PlayerControllerSwimming : MonoBehaviour
             {
                 player.setControllerUI(controllerType.xBox);
             }
+            MenuManager.Instance.usingGamepad();
         }
         else
         {
             player.setControllerUI(controllerType.MouseAndKeyboard);
+            if(MenuManager.Instance != null)
+            {
+                MenuManager.Instance.usingMouseAndKeyboard();
+            }
         }
     }
 

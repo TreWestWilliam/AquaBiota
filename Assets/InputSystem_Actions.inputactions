@@ -11,7 +11,7 @@
                     "id": "351f2ccd-1f9f-44bf-9bec-d62ac5c5f408",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "Hold",
+                    "interactions": "",
                     "initialStateCheck": true
                 },
                 {
@@ -87,6 +87,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "UseCleaner",
+                    "type": "Button",
+                    "id": "503246ad-380b-4ff8-bdd5-a340d5fb5ec6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "SwimUp",
                     "type": "Button",
                     "id": "79f32cd9-3310-4551-9377-31d4ff5b061f",
@@ -102,6 +111,15 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "e2cdb13b-c7e4-4f65-b047-f497a0ef514b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 }
             ],
@@ -532,6 +550,50 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "SwimDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6c1cd30e-7216-4926-b82c-bd893601cd88",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2a714962-04c4-43d3-9e86-215a941f1922",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20d31384-3de1-413d-95da-6b5cea37c955",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "UseCleaner",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2b1a1ea7-abeb-4c42-b1a9-263cc43df026",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "UseCleaner",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1048,6 +1110,45 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "PauseMenu",
+            "id": "24f352b8-1253-4c8f-8b28-c1ca7c936d62",
+            "actions": [
+                {
+                    "name": "UnPause",
+                    "type": "Button",
+                    "id": "be4e682d-0651-4a45-a801-f97078c36e13",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1b23c34a-0408-455c-83aa-a1a78dcfb004",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "UnPause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ff99cb4-b5fe-4949-92e3-9b3403d60c86",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "UnPause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
