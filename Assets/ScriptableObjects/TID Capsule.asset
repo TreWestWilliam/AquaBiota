@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92aee32ec737a3142a98c6f080aada17, type: 3}
   m_Name: TID Capsule
   m_EditorClassIdentifier: 
-  itemName: Capsule
+  ItemName: Capsule
   itemSprite:
     UseConstant: 1
     ConstantValue: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

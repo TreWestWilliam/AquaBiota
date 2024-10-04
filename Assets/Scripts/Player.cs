@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     {
         if(!sprayingCleaner)
         {
-            Debug.Log("Spray started at " + Time.time);
+            //Debug.Log("Spray started at " + Time.time);
             cleanerSpray.transform.position = cleaningSprayOrigin.position;
             cleanerSpray.transform.rotation = cleaningSprayOrigin.rotation;
             cleanerCollider.gameObject.SetActive(true);
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     private IEnumerator sprayComplete()
     {
         yield return new WaitForSeconds(consecutiveSprayDelay);
-        Debug.Log("Spray complete at " + Time.time);
+        //Debug.Log("Spray complete at " + Time.time);
         cleanerCollider.gameObject.SetActive(false);
         sprayingCleaner = false;
     }

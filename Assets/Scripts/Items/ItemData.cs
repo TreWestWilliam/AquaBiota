@@ -1,9 +1,16 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ItemData", menuName = "Scriptable Objects/ItemData")]
+[CreateAssetMenu(fileName = "ItemData", menuName = "Data Objects/ItemData")]
 public class ItemData : ScriptableObject
 {
-    public string itemName;
+    [SerializeField] private string ItemName;
+    public string itemName
+    {
+        get
+        {
+            return ItemName;
+        }
+    }
 
     [SerializeField] private SpriteRef itemSprite;
     public Sprite sprite

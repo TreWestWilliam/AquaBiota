@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92aee32ec737a3142a98c6f080aada17, type: 3}
   m_Name: TID Sphere
   m_EditorClassIdentifier: 
-  itemName: Sphere
+  ItemName: Sphere
   itemSprite:
     UseConstant: 1
     ConstantValue: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
@@ -26,6 +26,10 @@ MonoBehaviour:
   ContentsShape:
     Size: {x: 1, y: 1}
     occupiedSpots: 00
+  ContentsBackground:
+    UseConstant: 1
+    ConstantValue: {fileID: 0}
+    Variable: {fileID: 0}
   Weight:
     UseConstant: 1
     ConstantValue: 18
