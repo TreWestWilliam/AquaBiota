@@ -16,6 +16,8 @@ public class PlayerControllerSwimming : MonoBehaviour
     public float VerticalMovespeed = 10;
     public float RotationalSpeed = 5;
     public float SwimBoostSpeed = 20;
+    public float MaxPitch = 60;
+    [SerializeField] private OceanManager _OceanManager;
 
     [Header("Camera Controls")]
     public Camera PlayerCamera;
@@ -34,13 +36,32 @@ public class PlayerControllerSwimming : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Vector2 MovementInput = _PlayerInput.actions["Move"].ReadValue<Vector2>();
         MovementInput *= Time.deltaTime * Movespeed;
-        
+
+        float TargetPitch = 0;
+        var TargetUp = _PlayerInput.actions["SwimUp"].ReadValue<float>();
+
+        if (transform.position.y > OceanManager.instance.waveHeight(transform.position.x, transform.position.z, Time.time))
+        {
+            TargetUp = 0;
+            _Rigidbody.useGravity = true;
+
+        }
+        else 
+        { 
+            _Rigidbody.useGravity = false; 
+        }
+
+        var TargetDown = _PlayerInput.actions["SwimDown"].ReadValue<float>();
+        TargetPitch += TargetUp * -MaxPitch;
+        TargetPitch += TargetDown * MaxPitch;
+        Debug.Log($"UP:{TargetUp}, DOWN:{TargetDown}");
+        float CurrentPitch = transform.rotation.eulerAngles.x;
+        Debug.Log($"TargetingPitch: {TargetPitch}");
         _Rigidbody.AddForce(transform.forward * MovementInput.magnitude);
         // Our rotation is basically the Camera's Rotation + The Input Direction Linerally Interpolated from our previous rotation
-        _Rigidbody.MoveRotation( Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0,(PlayerCamera.transform.rotation.eulerAngles.y - Vector2.SignedAngle(Vector2.up, MovementInput)),0)  ), RotationalSpeed  * MovementInput.magnitude));
+        _Rigidbody.MoveRotation( Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(TargetPitch,(PlayerCamera.transform.rotation.eulerAngles.y - Vector2.SignedAngle(Vector2.up, MovementInput)),0)  ), RotationalSpeed  * _Rigidbody.linearVelocity.normalized.magnitude));
 
 
         //Basic orbiting camera
@@ -54,6 +75,13 @@ public class PlayerControllerSwimming : MonoBehaviour
     {
         //TODO COOLDOWNS? (Probably through coroutines or something)
         _Rigidbody.AddForce(transform.up *VerticalMovespeed + (transform.forward * SwimBoostSpeed));
+
+        //Jumping if at the water's surface.
+        if (transform.position.y > OceanManager.instance.waveHeight(transform.position.x, transform.position.z, Time.time))
+        { 
+
+        
+        }
     }
 
     public void SwimDown(CallbackContext callback) 
@@ -99,6 +127,7 @@ public class PlayerControllerSwimming : MonoBehaviour
     }
 
     //These functions were from testing, didn't work out since it only moved whenver the controller changed directions
+
     public void Move(CallbackContext callbackContext) 
     {
     }
