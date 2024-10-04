@@ -16,6 +16,8 @@ public class PlayerControllerSwimming : MonoBehaviour
     public float VerticalMovespeed = 10;
     public float RotationalSpeed = 5;
     public float SwimBoostSpeed = 20;
+    public float MaxPitch = 60;
+
 
     [Header("Camera Controls")]
     public Camera PlayerCamera;
@@ -35,12 +37,23 @@ public class PlayerControllerSwimming : MonoBehaviour
     void Update()
     {
 
+        
+
+
         Vector2 MovementInput = _PlayerInput.actions["Move"].ReadValue<Vector2>();
         MovementInput *= Time.deltaTime * Movespeed;
-        
+
+        float TargetPitch = 0;
+        var TargetUp = _PlayerInput.actions["SwimUp"].ReadValue<float>();
+        var TargetDown = _PlayerInput.actions["SwimDown"].ReadValue<float>();
+        TargetPitch += TargetUp * -MaxPitch;
+        TargetPitch += TargetDown * MaxPitch;
+        Debug.Log($"UP:{TargetUp}, DOWN:{TargetDown}");
+        float CurrentPitch = transform.rotation.eulerAngles.x;
+        Debug.Log($"TargetingPitch: {TargetPitch}");
         _Rigidbody.AddForce(transform.forward * MovementInput.magnitude);
         // Our rotation is basically the Camera's Rotation + The Input Direction Linerally Interpolated from our previous rotation
-        _Rigidbody.MoveRotation( Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0,(PlayerCamera.transform.rotation.eulerAngles.y - Vector2.SignedAngle(Vector2.up, MovementInput)),0)  ), RotationalSpeed  * MovementInput.magnitude));
+        _Rigidbody.MoveRotation( Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(TargetPitch,(PlayerCamera.transform.rotation.eulerAngles.y - Vector2.SignedAngle(Vector2.up, MovementInput)),0)  ), RotationalSpeed  * _Rigidbody.linearVelocity.normalized.magnitude));
 
 
         //Basic orbiting camera
