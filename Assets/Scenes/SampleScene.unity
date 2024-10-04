@@ -10835,6 +10835,7 @@ MonoBehaviour:
   RotationalSpeed: 0.1
   SwimBoostSpeed: 20
   MaxPitch: 30
+  _OceanManager: {fileID: 0}
   PlayerCamera: {fileID: 330585545}
   CameraDistance: 10
 --- !u!54 &621758002

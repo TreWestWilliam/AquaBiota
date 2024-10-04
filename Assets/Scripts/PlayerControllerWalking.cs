@@ -16,6 +16,7 @@ public class PlayerControllerWalking : MonoBehaviour
     public PhysicsMaterial StoppedMaterial;
     private CapsuleCollider _CapsuleCollider;
     [SerializeField] private bool IsGrounded;
+    
 
     [Header("Animation")]
     public Animator _Animator;

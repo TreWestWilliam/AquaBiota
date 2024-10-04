@@ -17,7 +17,7 @@ public class PlayerControllerSwimming : MonoBehaviour
     public float RotationalSpeed = 5;
     public float SwimBoostSpeed = 20;
     public float MaxPitch = 60;
-
+    [SerializeField] private OceanManager _OceanManager;
 
     [Header("Camera Controls")]
     public Camera PlayerCamera;
@@ -36,15 +36,23 @@ public class PlayerControllerSwimming : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        
-
-
         Vector2 MovementInput = _PlayerInput.actions["Move"].ReadValue<Vector2>();
         MovementInput *= Time.deltaTime * Movespeed;
 
         float TargetPitch = 0;
         var TargetUp = _PlayerInput.actions["SwimUp"].ReadValue<float>();
+
+        if (transform.position.y > OceanManager.instance.waveHeight(transform.position.x, transform.position.z, Time.time))
+        {
+            TargetUp = 0;
+            _Rigidbody.useGravity = true;
+
+        }
+        else 
+        { 
+            _Rigidbody.useGravity = false; 
+        }
+
         var TargetDown = _PlayerInput.actions["SwimDown"].ReadValue<float>();
         TargetPitch += TargetUp * -MaxPitch;
         TargetPitch += TargetDown * MaxPitch;
@@ -67,6 +75,13 @@ public class PlayerControllerSwimming : MonoBehaviour
     {
         //TODO COOLDOWNS? (Probably through coroutines or something)
         _Rigidbody.AddForce(transform.up *VerticalMovespeed + (transform.forward * SwimBoostSpeed));
+
+        //Jumping if at the water's surface.
+        if (transform.position.y > OceanManager.instance.waveHeight(transform.position.x, transform.position.z, Time.time))
+        { 
+
+        
+        }
     }
 
     public void SwimDown(CallbackContext callback) 
@@ -107,6 +122,7 @@ public class PlayerControllerSwimming : MonoBehaviour
     }
 
     //These functions were from testing, didn't work out since it only moved whenver the controller changed directions
+
     public void Move(CallbackContext callbackContext) 
     {
     }
