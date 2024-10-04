@@ -35,7 +35,7 @@ public class PlayerControllerWalking : MonoBehaviour
         Cursor.visible = false;
 
         _CapsuleCollider = GetComponent<CapsuleCollider>();
-        _Animator = (_Animator != null) ? _Animator = _Animator : _Animator = GetComponentInChildren<Animator>(); 
+        _Animator = (_Animator != null) ? _Animator: GetComponentInChildren<Animator>(); 
 
     }
 

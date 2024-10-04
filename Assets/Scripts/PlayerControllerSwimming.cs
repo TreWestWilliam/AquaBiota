@@ -56,9 +56,9 @@ public class PlayerControllerSwimming : MonoBehaviour
         var TargetDown = _PlayerInput.actions["SwimDown"].ReadValue<float>();
         TargetPitch += TargetUp * -MaxPitch;
         TargetPitch += TargetDown * MaxPitch;
-        Debug.Log($"UP:{TargetUp}, DOWN:{TargetDown}");
+        //Debug.Log($"UP:{TargetUp}, DOWN:{TargetDown}");
         float CurrentPitch = transform.rotation.eulerAngles.x;
-        Debug.Log($"TargetingPitch: {TargetPitch}");
+        //Debug.Log($"TargetingPitch: {TargetPitch}");
         _Rigidbody.AddForce(transform.forward * MovementInput.magnitude);
         // Our rotation is basically the Camera's Rotation + The Input Direction Linerally Interpolated from our previous rotation
         _Rigidbody.MoveRotation( Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(TargetPitch,(PlayerCamera.transform.rotation.eulerAngles.y - Vector2.SignedAngle(Vector2.up, MovementInput)),0)  ), RotationalSpeed  * _Rigidbody.linearVelocity.normalized.magnitude));
