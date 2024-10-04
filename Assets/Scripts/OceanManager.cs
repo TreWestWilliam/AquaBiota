@@ -64,6 +64,11 @@ public class OceanManager : MonoBehaviour
         return y;
     }
 
+    public float lowestWaveHeight()
+    {
+        return SurfaceHeight - (waveAmplitude / 2f);
+    }
+
     public float waveHeight(float x, float z, float time)
     {
         return SurfaceHeight + waveOffset(x, z, time);

@@ -58,7 +58,7 @@ public class ItemObject : MonoBehaviour, InteractableObject
         {
             Debug.Log(gameObject.name + " is moving " + rb.linearVelocity.y + " at " + transform.position.y);
         }*/
-        if(transform.position.y < OceanManager.instance.waveHeight(transform.position.x, transform.position.y, Time.time))
+        if(transform.position.y < OceanManager.instance.lowestWaveHeight() || transform.position.y < OceanManager.instance.waveHeight(transform.position.x, transform.position.y, Time.time))
         {
             if(aboveSurface)
             {
