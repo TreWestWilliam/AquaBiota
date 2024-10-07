@@ -10093,6 +10093,8 @@ MonoBehaviour:
   VerticalMovespeed: 15
   RotationalSpeed: 0.1
   SwimBoostSpeed: 20
+  MaxPitch: 60
+  _OceanManager: {fileID: 0}
   PlayerCamera: {fileID: 330585545}
   CameraDistance: 10
 --- !u!54 &621758002
@@ -10634,10 +10636,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 725195221}
+  - component: {fileID: 725195217}
   - component: {fileID: 725195220}
   - component: {fileID: 725195219}
   - component: {fileID: 725195218}
-  - component: {fileID: 725195217}
   m_Layer: 9
   m_Name: Pollutant 2
   m_TagString: Untagged
@@ -10658,7 +10660,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pollutionData: {fileID: 11400000, guid: 1f93b26bffdface4989b3499b162f0f9, type: 2}
-  Befoulment: 10
+  Befoulment: 30
+  particles: {fileID: 725195220}
 --- !u!135 &725195218
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10704,7 +10707,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 77c6d63c295cf7848a6f551b732d1e2e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10840,7 +10843,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -28253,7 +28256,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 77c6d63c295cf7848a6f551b732d1e2e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -34495,10 +34498,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2095094752}
+  - component: {fileID: 2095094754}
   - component: {fileID: 2095094751}
   - component: {fileID: 2095094750}
   - component: {fileID: 2095094753}
-  - component: {fileID: 2095094754}
   m_Layer: 9
   m_Name: Pollutant
   m_TagString: Untagged
@@ -34530,7 +34533,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 77c6d63c295cf7848a6f551b732d1e2e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -34666,7 +34669,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -35154,7 +35157,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 10
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 1
     rotation3D: 0
@@ -39356,6 +39359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pollutionData: {fileID: 11400000, guid: 1f93b26bffdface4989b3499b162f0f9, type: 2}
   Befoulment: 10
+  particles: {fileID: 2095094751}
 --- !u!1 &2099074157
 GameObject:
   m_ObjectHideFlags: 0

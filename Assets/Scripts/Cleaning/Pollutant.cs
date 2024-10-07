@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Pollutant : MonoBehaviour
@@ -13,15 +14,34 @@ public class Pollutant : MonoBehaviour
         }
     }
 
+    [SerializeField] private ParticleSystem particles;
+
 
     private float cleanRate = 0f;
     private int cleaning = 0;
+
+    private void Awake()
+    {
+        setParticleRate();
+    }
 
     private void FixedUpdate()
     {
         if(cleaning > 0)
         {
             cleanOverTime(Time.fixedDeltaTime);
+        }
+    }
+
+    private void setParticleRate()
+    {
+        if(particles != null)
+        {
+            ParticleSystem.MainModule main = particles.main;
+            main.maxParticles = (Befoulment / 2) + (Befoulment % 2);
+            ParticleSystem.EmissionModule emissions = particles.emission;
+            float rate = Mathf.Ceil((float)Befoulment / 5f);
+            emissions.rateOverTime = new ParticleSystem.MinMaxCurve(rate, rate + 3);
         }
     }
 
@@ -46,6 +66,10 @@ public class Pollutant : MonoBehaviour
         if(Befoulment <= 0)
         {
             cleanUp();
+        }
+        else
+        {
+            setParticleRate();
         }
     }
 
