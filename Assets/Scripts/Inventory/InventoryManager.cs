@@ -9,8 +9,8 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private int rows;
     [SerializeField] private int columns;
-    private static int maxRows = 10;
-    private static int maxColumns = 10;
+    private static int maxRows = 25;
+    private static int maxColumns = 25;
 
     public GameObject[,] inventorySlots;
 
