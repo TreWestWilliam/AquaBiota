@@ -22,6 +22,8 @@ public class PlayerControllerSwimming : MonoBehaviour
     [Header("Camera Controls")]
     public Camera PlayerCamera;
     public float CameraDistance = 10;
+    public float CameraSensitivityVertical = 5f;
+    public float CameraSensitivityHorizontal = 5f;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,10 +36,10 @@ public class PlayerControllerSwimming : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector2 MovementInput = _PlayerInput.actions["Move"].ReadValue<Vector2>();
-        MovementInput *= Time.deltaTime * Movespeed;
+        MovementInput *= /*Time.deltaTime **/ Movespeed;
 
         float TargetPitch = 0;
         var TargetUp = _PlayerInput.actions["SwimUp"].ReadValue<float>();
@@ -66,7 +68,7 @@ public class PlayerControllerSwimming : MonoBehaviour
 
         //Basic orbiting camera
         Vector2 CameraInput = _PlayerInput.actions["Look"].ReadValue<Vector2>();
-        PlayerCamera.transform.position += PlayerCamera.transform.right * CameraInput.x * Time.deltaTime + PlayerCamera.transform.up * CameraInput.y * Time.deltaTime;
+        PlayerCamera.transform.position += PlayerCamera.transform.right * CameraInput.x * CameraSensitivityHorizontal * Time.fixedDeltaTime + PlayerCamera.transform.up * CameraInput.y * CameraSensitivityVertical * Time.fixedDeltaTime;
         PlayerCamera.transform.LookAt(transform);
         PlayerCamera.transform.position = transform.position - PlayerCamera.transform.forward * CameraDistance;
     }
