@@ -10089,7 +10089,7 @@ MonoBehaviour:
   player: {fileID: 621758005}
   _PlayerInput: {fileID: 621757998}
   _Rigidbody: {fileID: 621758002}
-  Movespeed: 200
+  Movespeed: 15
   VerticalMovespeed: 15
   RotationalSpeed: 0.1
   SwimBoostSpeed: 20
@@ -10097,6 +10097,8 @@ MonoBehaviour:
   _OceanManager: {fileID: 0}
   PlayerCamera: {fileID: 330585545}
   CameraDistance: 10
+  CameraSensitivityVertical: 7
+  CameraSensitivityHorizontal: 7
 --- !u!54 &621758002
 Rigidbody:
   m_ObjectHideFlags: 0
