@@ -247,7 +247,6 @@ GameObject:
   - component: {fileID: 8498766457654930560}
   - component: {fileID: 2968982168298203156}
   - component: {fileID: 4977473298756505433}
-  - component: {fileID: 6725761170736190736}
   - component: {fileID: 668616469542707053}
   m_Layer: 5
   m_Name: Main Inventory
@@ -315,22 +314,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6725761170736190736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6187025830137833894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e23f4462dc052a64caef264f69bafcba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventorySlotPrefab: {fileID: 8651089282665141584, guid: f0ded368f44bdb643aa6e0ad0c9256d0, type: 3}
-  inventoryGrid: {fileID: 1888906607511101959}
-  rows: 3
-  columns: 4
 --- !u!114 &668616469542707053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,11 +327,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   space:
-    Size: {x: 1, y: 1}
-    occupiedSpots: 00
+    Size: {x: 4, y: 3}
+    occupiedSpots: 000000000000000000000000
   contents:
-    Size: {x: 1, y: 1}
-    occupiedSpots: 00
+    Size: {x: 4, y: 3}
+    occupiedSpots: 000000000000000000000000
   items: []
   background: {fileID: 0}
   itemParent: {fileID: 0}
+  inventorySlotPrefab: {fileID: 8651089282665141584, guid: f0ded368f44bdb643aa6e0ad0c9256d0, type: 3}

@@ -17,6 +17,9 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] private RectTransform itemParent;
 
+    public GameObject inventorySlotPrefab;
+    public GameObject[,] inventorySlots;
+
     private void Awake()
     {
         if(items == null)
@@ -32,6 +35,20 @@ public class Inventory : MonoBehaviour
         foreach(InventoryItem item in items)
         {
             addItemToContents(item);
+        }
+
+        Debug.Log(this.transform.name);
+        Transform inventoryBody = this.transform.Find("Inventory Body");
+        Debug.Log(inventoryBody.name);
+        inventoryBody.GetComponent<GridLayoutGroup>().constraintCount = space.size.x;
+        inventorySlots = new GameObject[space.size.x, space.size.y];
+        for (int i = 0; i < space.size.y; i++)
+        {
+            for (int j = 0; j < space.size.x; j++)
+            {
+                inventorySlots[j, i] = Instantiate(inventorySlotPrefab);
+                inventorySlots[j, i].transform.SetParent(inventoryBody, true);
+            }
         }
     }
 
