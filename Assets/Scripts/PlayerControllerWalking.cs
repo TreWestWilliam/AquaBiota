@@ -112,4 +112,18 @@ public class PlayerControllerWalking : MonoBehaviour
         if (IsGrounded)
             _Rigidbody.AddForce(JumpPower * transform.up);
     }
+
+    public void Pause(CallbackContext callbackContext) 
+    {
+        if (Cursor.visible)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else 
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
 }
