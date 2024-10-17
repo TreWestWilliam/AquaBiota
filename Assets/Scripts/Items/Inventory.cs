@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] private Image background;
 
+    [SerializeField] private RectTransform gridParent;
     [SerializeField] private RectTransform itemParent;
 
     public GameObject inventorySlotPrefab;
@@ -37,17 +38,14 @@ public class Inventory : MonoBehaviour
             addItemToContents(item);
         }
 
-        Debug.Log(this.transform.name);
-        Transform inventoryBody = this.transform.Find("Inventory Body");
-        Debug.Log(inventoryBody.name);
-        inventoryBody.GetComponent<GridLayoutGroup>().constraintCount = space.size.x;
+        gridParent.GetComponent<GridLayoutGroup>().constraintCount = space.size.x;
         inventorySlots = new GameObject[space.size.x, space.size.y];
         for (int i = 0; i < space.size.y; i++)
         {
             for (int j = 0; j < space.size.x; j++)
             {
                 inventorySlots[j, i] = Instantiate(inventorySlotPrefab);
-                inventorySlots[j, i].transform.SetParent(inventoryBody, true);
+                inventorySlots[j, i].transform.SetParent(gridParent, true);
             }
         }
     }
@@ -57,15 +55,16 @@ public class Inventory : MonoBehaviour
         background.sprite = backgroundSprite;
     }
 
-    private void add(InventoryItem item, Vector2Int position)
+    public void add(InventoryItem item, Vector2Int position)
     {
         item.position = position;
 
         items.Add(item);
         addItemToContents(item);
         item.transform.SetParent(itemParent);
-        item.transform.localPosition = new Vector3(position.x * InventoriesManager.instance.gridSize,
-            position.y * InventoriesManager.instance.gridSize, 0f);
+        Vector2 itemSize = new Vector2(item.itemData.inventoryShape.size.x, item.itemData.inventoryShape.size.y) / 2f;
+        item.transform.localPosition = new Vector3((position.x - (space.size.x / 2f) + itemSize.x) * InventoriesManager.instance.gridSize,
+            -(position.y - (space.size.y / 2f - itemSize.y)) * InventoriesManager.instance.gridSize, 0f);
     }
 
     public void remove(InventoryItem item)

@@ -242,23 +242,25 @@ public class InventorySpace
 
         int maxX = offset.x + otherX > size.x ? size.x : offset.x + otherX;
         int maxY = offset.y + otherY > size.y ? size.y : offset.y + otherY;
-
+        
         for(int y = minY; y < maxY; y++)
         {
             for(int x = minX; x < maxX; x++)
             {
                 int oX = rotation.flipX() ? otherX - x - 1 : x;
                 int oY = rotation.flipY() ? otherY - y - 1 : y;
-
-                bool otherOccupied = rotation.onSide() ? otherGrid.checkOccupied(oY, oX) : otherGrid.checkOccupied(oX, oY);
-
-                if(otherOccupied)
+                Debug.Log(oX + " " + oY);
+                Debug.Log(minX + " " + minY);
+                bool otherOccupied = rotation.onSide() ? otherGrid.checkOccupied(oY - minY, oX - minX) : otherGrid.checkOccupied(oX - minX, oY - minY);
+                
+                if (otherOccupied)
                 {
                     setState(newOccupied, x, y);
                     coordinates.Add(new Vector2Int(x, y));
                 }
             }
         }
+        
         return coordinates.ToArray();
     }
 
@@ -288,7 +290,7 @@ public class InventorySpace
                 {
                     int oX = rotation.flipX() ? otherX - x - 1 : x;
                     int oY = rotation.flipY() ? otherY - y - 1 : y;
-
+                    
                     bool otherOccupied = rotation.onSide() ? otherGrid.checkOccupied(oY, oX) : otherGrid.checkOccupied(oX, oY);
 
                     if(otherOccupied)

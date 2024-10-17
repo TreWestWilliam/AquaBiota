@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92aee32ec737a3142a98c6f080aada17, type: 3}
+  m_Name: C-Item
+  m_EditorClassIdentifier: 
+  ItemName: C-Item
+  itemSprite:
+    UseConstant: 1
+    ConstantValue: {fileID: 3286163911610860551, guid: d926985c40aa3ad4dbd0c318d042e73c, type: 3}
+    Variable: {fileID: 0}
+  ItemObjectPrefab: {fileID: 0}
+  InventoryItemPrefab: {fileID: 0}
+  InventoryShape:
+    Size: {x: 2, y: 3}
+    occupiedSpots: 010101000101
+  IsContainer: 0
+  ContentsShape:
+    Size: {x: 2, y: 3}
+    occupiedSpots: 010101000101
+  ContentsBackground:
+    UseConstant: 1
+    ConstantValue: {fileID: 3286163911610860551, guid: d926985c40aa3ad4dbd0c318d042e73c, type: 3}
+    Variable: {fileID: 0}
+  Weight:
+    UseConstant: 1
+    ConstantValue: 1
+    Variable: {fileID: 0}
+  Buoyancy:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  Drag:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  Value:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  Tags: 
