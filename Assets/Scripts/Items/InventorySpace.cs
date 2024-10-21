@@ -247,11 +247,10 @@ public class InventorySpace
         {
             for(int x = minX; x < maxX; x++)
             {
-                int oX = rotation.flipX() ? otherX - x - 1 : x;
-                int oY = rotation.flipY() ? otherY - y - 1 : y;
-                Debug.Log(oX + " " + oY);
-                Debug.Log(minX + " " + minY);
-                bool otherOccupied = rotation.onSide() ? otherGrid.checkOccupied(oY - minY, oX - minX) : otherGrid.checkOccupied(oX - minX, oY - minY);
+                int oX = rotation.flipX() ? otherX - x - 1 + minX : x - minX;
+                int oY = rotation.flipY() ? otherY - y - 1 + minY : y - minY;
+
+                bool otherOccupied = rotation.onSide() ? otherGrid.checkOccupied(oY, oX) : otherGrid.checkOccupied(oX, oY);
                 
                 if (otherOccupied)
                 {
@@ -288,9 +287,9 @@ public class InventorySpace
             {
                 if(!onlyOccupied || checkOccupied(x, y))
                 {
-                    int oX = rotation.flipX() ? otherX - x - 1 : x;
-                    int oY = rotation.flipY() ? otherY - y - 1 : y;
-                    
+                    int oX = rotation.flipX() ? otherX - x - 1 + minX : x - minX;
+                    int oY = rotation.flipY() ? otherY - y - 1 + minY : y - minY;
+
                     bool otherOccupied = rotation.onSide() ? otherGrid.checkOccupied(oY, oX) : otherGrid.checkOccupied(oX, oY);
 
                     if(otherOccupied)

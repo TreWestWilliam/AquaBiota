@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Unity.VectorGraphics;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour
     private InventoryItem[,] itemByCoordinate;
 
     [SerializeField] private Image background;
+    [SerializeField] private TMP_Text nameText;
 
     [SerializeField] private RectTransform gridParent;
     [SerializeField] private RectTransform itemParent;
@@ -40,14 +41,18 @@ public class Inventory : MonoBehaviour
 
         gridParent.GetComponent<GridLayoutGroup>().constraintCount = space.size.x;
         inventorySlots = new GameObject[space.size.x, space.size.y];
+        int width = Screen.width;
         for (int i = 0; i < space.size.y; i++)
         {
             for (int j = 0; j < space.size.x; j++)
             {
                 inventorySlots[j, i] = Instantiate(inventorySlotPrefab);
                 inventorySlots[j, i].transform.SetParent(gridParent, true);
+                inventorySlots[j, i].transform.localScale = new Vector3(1, 1, 1);
             }
         }
+
+        nameText.text = this.name;
     }
 
     public void setBackground(Sprite backgroundSprite)
@@ -55,16 +60,34 @@ public class Inventory : MonoBehaviour
         background.sprite = backgroundSprite;
     }
 
-    public void add(InventoryItem item, Vector2Int position)
+    public bool add(InventoryItem item, Vector2Int position)
     {
         item.position = position;
+
+        if (!space.checkFitAndOverlap(item.itemData.inventoryShape, position, item.rotation))
+        {
+            Debug.Log("Item cannot fit");
+            return false;
+        }
 
         items.Add(item);
         addItemToContents(item);
         item.transform.SetParent(itemParent);
-        Vector2 itemSize = new Vector2(item.itemData.inventoryShape.size.x, item.itemData.inventoryShape.size.y) / 2f;
+
+        // Handles displaying item
+        Vector2 itemSize;
+        if (item.rotation.onSide())
+        {
+            itemSize = new Vector2(item.itemData.inventoryShape.size.y, item.itemData.inventoryShape.size.x) / 2f;
+        }
+        else
+        {
+            itemSize = new Vector2(item.itemData.inventoryShape.size.x, item.itemData.inventoryShape.size.y) / 2f;
+            
+        }
         item.transform.localPosition = new Vector3((position.x - (space.size.x / 2f) + itemSize.x) * InventoriesManager.instance.gridSize,
-            -(position.y - (space.size.y / 2f - itemSize.y)) * InventoriesManager.instance.gridSize, 0f);
+                -(position.y - (space.size.y / 2f) + itemSize.y) * InventoriesManager.instance.gridSize, 0f);
+        return true;
     }
 
     public void remove(InventoryItem item)

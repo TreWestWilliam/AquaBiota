@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 4403388464301135619}
   - component: {fileID: 3329779009345831886}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Name Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -410,6 +410,7 @@ MonoBehaviour:
     occupiedSpots: 000000000000000000000000
   items: []
   background: {fileID: 4977473298756505433}
+  nameText: {fileID: 3329779009345831886}
   gridParent: {fileID: 4224792203848436873}
   itemParent: {fileID: 3070080178670897647}
   inventorySlotPrefab: {fileID: 8651089282665141584, guid: f0ded368f44bdb643aa6e0ad0c9256d0, type: 3}

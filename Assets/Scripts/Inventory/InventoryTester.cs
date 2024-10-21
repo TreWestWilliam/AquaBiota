@@ -36,6 +36,11 @@ public class InventoryTester : MonoBehaviour
     public void AddItem()
     {
         InventoryItem newItem = Instantiate(item, itemParent.transform);
-        inventory.GetComponent<Inventory>().add(newItem, new Vector2Int(0, 0));
+        newItem.flipHorizontal();
+        newItem.rotateWiddershins();
+        if (!inventory.GetComponent<Inventory>().add(newItem, new Vector2Int(1, 1)))
+        {
+            Destroy(newItem.gameObject);
+        }
     }
 }
