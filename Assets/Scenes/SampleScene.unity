@@ -2542,7 +2542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &174874742
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7266,7 +7266,6 @@ GameObject:
   m_Component:
   - component: {fileID: 330585546}
   - component: {fileID: 330585545}
-  - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   m_Layer: 0
   m_Name: Main Camera
@@ -7275,14 +7274,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &330585544
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
 --- !u!20 &330585545
 Camera:
   m_ObjectHideFlags: 0
@@ -10053,22 +10044,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 503246ad-380b-4ff8-bdd5-a340d5fb5ec6
     m_ActionName: 'Player/UseCleaner[/Keyboard/q,/XInputControllerWindows/buttonEast,/DualSenseGamepadHID/buttonEast]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 621758005}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: EventDebug
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 6c83954e-8a50-4ab2-a12b-a964835de34f
-    m_ActionName: 'PauseMenu/Test[/Keyboard/q,/XInputControllerWindows/buttonWest,/DualSenseGamepadHID/buttonWest]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -10151,6 +10126,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 26c3b3fa133a82047abd8e15a3a68a6d, type: 3}
   m_PrefabInstance: {fileID: 1661058754}
   m_PrefabAsset: {fileID: 0}
+--- !u!81 &621758008
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621757997}
+  m_Enabled: 1
 --- !u!1 &623560647
 GameObject:
   m_ObjectHideFlags: 0
@@ -15582,7 +15565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &731848463
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24970,6 +24953,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578540019}
   m_CullTransparentMesh: 1
+--- !u!1 &1591924194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1591924196}
+  - component: {fileID: 1591924195}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1591924195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591924194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42004ee90631a741be8a97b1d6ec453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: a6fb2770310f26e418f3e780d7a74421, type: 2}
+  sfxPrefab: {fileID: 4830150312645607894, guid: 0e706bb6887b19240a4bdcc3a6007a93, type: 3}
+--- !u!4 &1591924196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591924194}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1595286867
 Mesh:
   m_ObjectHideFlags: 0
@@ -25493,6 +25522,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 272854609}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 26c3b3fa133a82047abd8e15a3a68a6d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 621758008}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 26c3b3fa133a82047abd8e15a3a68a6d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 621758005}
@@ -34343,7 +34375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2014556405
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40820,6 +40852,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1287934476}
+  - {fileID: 1591924196}
   - {fileID: 965958909}
   - {fileID: 128486557}
   - {fileID: 1924007702}

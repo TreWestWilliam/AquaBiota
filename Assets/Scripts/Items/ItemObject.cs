@@ -82,7 +82,7 @@ public class ItemObject : MonoBehaviour, InteractableObject
 
     public string getInteractText()
     {
-        return interactDescription + "\n" + itemData.itemName;
+        return interactDescription + "\n" + itemData.dataName;
     }
 
     public Vector3 getPosition()
@@ -99,6 +99,10 @@ public class ItemObject : MonoBehaviour, InteractableObject
     {
         if(confirmed)
         {
+            if(itemData.pickupSound != null)
+            {
+                AudioManager.instance.playSFXAudioClip(itemData.pickupSound, transform, 1f);
+            }
             gameObject.SetActive(false);
         }
     }

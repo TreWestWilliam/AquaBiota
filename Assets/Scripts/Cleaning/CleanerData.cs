@@ -1,25 +1,39 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CleanerData", menuName = "Data Objects/CleanerData")]
-public class CleanerData : ScriptableObject
+public class CleanerData : BasicData
 {
-    [SerializeField] private string CleanerName;
-    public string cleanerName
+    [SerializeField] private Mesh cMesh;
+    public Mesh mesh
     {
         get
         {
-            return CleanerName;
+            return cMesh;
+        }
+    }
+    [SerializeField] private Material cMaterial;
+    public Material material
+    {
+        get
+        {
+            return cMaterial;
+        }
+    }
+    [SerializeField] private Color cColor;
+    public Color color
+    {
+        get
+        {
+            return cColor;
         }
     }
 
-    [SerializeField] private Mesh cMesh;
-    [SerializeField] private Material cMaterial;
-    [SerializeField] private Color cColor;
-
-    [SerializeField] private int UsePerSpray;
-
     [SerializeField] private float WeightPerAmmount;
-
-    [SerializeField] private float Range;
-    [SerializeField] private float Spread;
+    public float weightPerAmmount
+    {
+        get
+        {
+            return WeightPerAmmount;
+        }
+    }
 }

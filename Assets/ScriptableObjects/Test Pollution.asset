@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb5fd3babfe5874599b2e97d9fe5bb8, type: 3}
   m_Name: Test Pollution
   m_EditorClassIdentifier: 
-  PollutionName: 
+  DataName: Test Pollution
+  dataSprite:
+    UseConstant: 1
+    ConstantValue: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+    Variable: {fileID: 0}
+  Description: 
   pMesh: {fileID: 0}
   pMaterial: {fileID: 0}
   cleaners:
@@ -20,3 +25,4 @@ MonoBehaviour:
     ammount: 3
   - cleanerData: {fileID: 11400000, guid: d40f986c1697889499f712d582b0d4a6, type: 2}
     ammount: 5
+  EnvironmentalImpact: 0

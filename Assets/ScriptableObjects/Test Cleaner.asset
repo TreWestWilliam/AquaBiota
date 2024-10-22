@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18565d414b104894fa767beaf6b30e3c, type: 3}
-  m_Name: TestCleaner
+  m_Name: Test Cleaner
   m_EditorClassIdentifier: 
-  CleanerName: Test Cleaner
+  DataName: Test Cleaner
+  dataSprite:
+    UseConstant: 1
+    ConstantValue: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+    Variable: {fileID: 0}
+  Description: 
   cMesh: {fileID: 0}
-  cMaterial: {fileID: 0}
-  cColor: {r: 0, g: 0, b: 0, a: 0}
-  UsePerSpray: 0
-  WeightPerAmmount: 0
-  Range: 0
-  Spread: 0
+  cMaterial: {fileID: 2100000, guid: 77c6d63c295cf7848a6f551b732d1e2e, type: 2}
+  cColor: {r: 0.6784314, g: 0.9529412, b: 0.9529412, a: 0.78431374}
+  WeightPerAmmount: 0.01

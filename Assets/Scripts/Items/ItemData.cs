@@ -1,26 +1,8 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ItemData", menuName = "Data Objects/ItemData")]
-public class ItemData : ScriptableObject
+public class ItemData : BasicData
 {
-    [SerializeField] private string ItemName;
-    public string itemName
-    {
-        get
-        {
-            return ItemName;
-        }
-    }
-
-    [SerializeField] private SpriteRef itemSprite;
-    public Sprite sprite
-    { 
-        get
-        {
-            return itemSprite;
-        }
-    }
-
     [SerializeField] private ItemObject ItemObjectPrefab;
     public ItemObject itemObject
     {
@@ -118,6 +100,15 @@ public class ItemData : ScriptableObject
         get
         {
             return Tags;
+        }
+    }
+
+    [SerializeField] private AudioClip PickupSound;
+    public AudioClip pickupSound
+    {
+        get
+        {
+            return PickupSound;
         }
     }
 }

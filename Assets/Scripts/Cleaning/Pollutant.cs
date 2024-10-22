@@ -5,6 +5,8 @@ public class Pollutant : MonoBehaviour
 {
     public PollutionData pollutionData;
 
+    public Polluter polluter;
+
     [SerializeField] private int Befoulment;
     public int befoulment
     {
@@ -85,6 +87,10 @@ public class Pollutant : MonoBehaviour
 
     public void cleanUp()
     {
+        if(polluter != null)
+        {
+            polluter.cleanedUp(this);
+        }
         Destroy(gameObject);
     }
 
