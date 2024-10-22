@@ -1,18 +1,27 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InventoryTester : MonoBehaviour
 {
     [SerializeField] InventoriesManager inventoriesManager;
+    [SerializeField] InventoryNavigator inventoryNavigator;
     [SerializeField] GameObject inventoryParent;
     [SerializeField] GameObject itemParent;
     [SerializeField] Slider rowsSlider;
     [SerializeField] Slider colsSlider;
+    [SerializeField] TMP_Text rowsNum;
+    [SerializeField] TMP_Text colsNum;
     [SerializeField] Sprite background;
 
-    [SerializeField] InventoryItem item;
+    [SerializeField] InventoryItem[] items;
 
     public GameObject inventory;
+    private InventoryItem itemToDelete;
+    public void Update()
+    {
+        
+    }
 
     public void ApplySize()
     {
@@ -31,16 +40,14 @@ public class InventoryTester : MonoBehaviour
             inventory.SetActive(true);
             Destroy(inventoryParent.transform.GetChild(0).gameObject);
         }
+
+        inventoryNavigator.UpdateInventory(inventory.GetComponent<Inventory>());
+        inventoryNavigator.OpenInventory();
     }
 
-    public void AddItem()
+    public void AddItem(int itemSelection)
     {
-        InventoryItem newItem = Instantiate(item, itemParent.transform);
-        newItem.flipHorizontal();
-        newItem.rotateWiddershins();
-        if (!inventory.GetComponent<Inventory>().add(newItem, new Vector2Int(1, 1)))
-        {
-            Destroy(newItem.gameObject);
-        }
+        InventoryItem newItem = Instantiate(items[itemSelection], itemParent.transform);
+        inventoryNavigator.HoldItem(newItem);
     }
 }

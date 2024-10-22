@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92aee32ec737a3142a98c6f080aada17, type: 3}
-  m_Name: C-Item
+  m_Name: -Item
   m_EditorClassIdentifier: 
-  ItemName: C-Item
+  ItemName: -Item
   itemSprite:
     UseConstant: 1
-    ConstantValue: {fileID: 3286163911610860551, guid: d926985c40aa3ad4dbd0c318d042e73c, type: 3}
+    ConstantValue: {fileID: 3286163911610860551, guid: e0b2299578e922d45bbc5f9b806702f7, type: 3}
     Variable: {fileID: 0}
   ItemObjectPrefab: {fileID: 0}
-  InventoryItemPrefab: {fileID: 3522992871568790460, guid: 3af30ba85a18636449a37bf2ff6e11a6, type: 3}
+  InventoryItemPrefab: {fileID: 0}
   InventoryShape:
-    Size: {x: 2, y: 3}
-    occupiedSpots: 010101000101
+    Size: {x: 1, y: 1}
+    occupiedSpots: 01
   IsContainer: 0
   ContentsShape:
-    Size: {x: 2, y: 3}
-    occupiedSpots: 010101000101
+    Size: {x: 1, y: 1}
+    occupiedSpots: 01
   ContentsBackground:
     UseConstant: 1
-    ConstantValue: {fileID: 3286163911610860551, guid: d926985c40aa3ad4dbd0c318d042e73c, type: 3}
+    ConstantValue: {fileID: 3286163911610860551, guid: e0b2299578e922d45bbc5f9b806702f7, type: 3}
     Variable: {fileID: 0}
   Weight:
     UseConstant: 1

@@ -360,8 +360,8 @@ public class InventorySpace
             {
                 if(checkOccupied(x, y))
                 {
-                    int oX = rotation.flipX() ? otherX - x - 1 : x;
-                    int oY = rotation.flipY() ? otherY - y - 1 : y;
+                    int oX = rotation.flipX() ? otherX - x - 1 + minX : x - minX;
+                    int oY = rotation.flipY() ? otherY - y - 1 + minY : y - minY;
 
                     bool otherOccupied = rotation.onSide() ? otherGrid.checkOccupied(oY, oX) : otherGrid.checkOccupied(oX, oY);
 
@@ -397,8 +397,8 @@ public class InventorySpace
             {
                 if(!checkOccupied(x, y))
                 {
-                    int oX = rotation.flipX() ? otherX - x - 1 : x;
-                    int oY = rotation.flipY() ? otherY - y - 1 : y;
+                    int oX = rotation.flipX() ? otherX - x - 1 + minX : x - minX;
+                    int oY = rotation.flipY() ? otherY - y - 1 + minY : y - minY;
 
                     bool otherOccupied = rotation.onSide() ? otherGrid.checkOccupied(oY, oX) : otherGrid.checkOccupied(oX, oY);
 

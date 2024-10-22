@@ -48,7 +48,7 @@ public class Inventory : MonoBehaviour
             {
                 inventorySlots[j, i] = Instantiate(inventorySlotPrefab);
                 inventorySlots[j, i].transform.SetParent(gridParent, true);
-                inventorySlots[j, i].transform.localScale = new Vector3(1, 1, 1);
+                inventorySlots[j, i].transform.localScale = new Vector3(1, 1, 1); // Needed to fix scaling
             }
         }
 
@@ -92,10 +92,9 @@ public class Inventory : MonoBehaviour
 
     public void remove(InventoryItem item)
     {
-        item.position = Vector2Int.zero;
-
-        items.Remove(item);
         removeItemFromContents(item);
+        items.Remove(item);
+        item.position = Vector2Int.zero;
         item.transform.SetParent(InventoriesManager.instance.looseItemParent);
     }
 
@@ -118,6 +117,11 @@ public class Inventory : MonoBehaviour
                 itemByCoordinate[coordinate.x, coordinate.y] = null;
             }
         }
+    }
+
+    public InventoryItem GetItemByCoordinate(Vector2Int position)
+    {
+        return itemByCoordinate[position.x, position.y];
     }
 
     public float getWeight()
