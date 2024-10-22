@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] private EventSystem eventSystem;
     [SerializeField] private PauseMenu pauseMenu;
+    private Options OptionsMenu;
 
     [SerializeField] private PlayerInput playerInput;
 
@@ -31,11 +32,18 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance != this)
+        if (Instance != this)
         {
             Destroy(Instance);
             Instance = this;
         }
+
+        if (Options.Instance != null)
+        {
+            OptionsMenu = Options.Instance;
+
+        }
+        else { Debug.LogWarning("Options is not currently initialized.",this.gameObject); }
 
         StartCoroutine(DisablePauseMenuAtStart());
     }

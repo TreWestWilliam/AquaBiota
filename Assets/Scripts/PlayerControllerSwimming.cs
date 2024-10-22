@@ -18,12 +18,9 @@ public class PlayerControllerSwimming : MonoBehaviour
     public float SwimBoostSpeed = 20;
     public float MaxPitch = 60;
     [SerializeField] private OceanManager _OceanManager;
-
-    [Header("Camera Controls")]
     public Camera PlayerCamera;
-    public float CameraDistance = 10;
-    public float CameraSensitivityVertical = 5f;
-    public float CameraSensitivityHorizontal = 5f;
+
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -66,11 +63,7 @@ public class PlayerControllerSwimming : MonoBehaviour
         _Rigidbody.MoveRotation( Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(TargetPitch,(PlayerCamera.transform.rotation.eulerAngles.y - Vector2.SignedAngle(Vector2.up, MovementInput)),0)  ), RotationalSpeed  * _Rigidbody.linearVelocity.normalized.magnitude));
 
 
-        //Basic orbiting camera
-        Vector2 CameraInput = _PlayerInput.actions["Look"].ReadValue<Vector2>();
-        PlayerCamera.transform.position += PlayerCamera.transform.right * CameraInput.x * CameraSensitivityHorizontal * Time.fixedDeltaTime + PlayerCamera.transform.up * CameraInput.y * CameraSensitivityVertical * Time.fixedDeltaTime;
-        PlayerCamera.transform.LookAt(transform);
-        PlayerCamera.transform.position = transform.position - PlayerCamera.transform.forward * CameraDistance;
+        
     }
     // We may wish to adjust the forward momentum gain in the future since it's quite significant
     public void SwimUp(CallbackContext callbackContext) 
