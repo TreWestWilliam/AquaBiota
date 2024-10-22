@@ -37,15 +37,15 @@ public class ItemObject : MonoBehaviour, InteractableObject
 
         rb.mass = itemData.weight;
         rb.linearDamping = itemData.drag;
-
-        if(inventoryItem != null && inventoryItem.transform.parent == transform)
-        {
-            inventoryItem.transform.SetParent(InventoriesManager.instance.looseItemParent);
-        }
     }
 
     private void Start()
     {
+        if(inventoryItem != null && inventoryItem.transform.parent == transform)
+        {
+            inventoryItem.transform.SetParent(InventoriesManager.instance.looseItemParent);
+        }
+
         if(itemData.isContainer && contents == null)
         {
 
