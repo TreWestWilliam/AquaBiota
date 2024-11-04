@@ -8,6 +8,7 @@ public class InventoriesManager : MonoBehaviour
     public RectTransform looseItemParent;
 
     [SerializeField] private Inventory inventoryPrefab;
+    [SerializeField] private GameObject inventorySlotPrefab;
 
     [SerializeField] private float GridSize;
     public float gridSize

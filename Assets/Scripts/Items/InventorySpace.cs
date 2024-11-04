@@ -242,23 +242,24 @@ public class InventorySpace
 
         int maxX = offset.x + otherX > size.x ? size.x : offset.x + otherX;
         int maxY = offset.y + otherY > size.y ? size.y : offset.y + otherY;
-
+        
         for(int y = minY; y < maxY; y++)
         {
             for(int x = minX; x < maxX; x++)
             {
-                int oX = rotation.flipX() ? otherX - x - 1 : x;
-                int oY = rotation.flipY() ? otherY - y - 1 : y;
+                int oX = rotation.flipX() ? otherX - x - 1 + minX : x - minX;
+                int oY = rotation.flipY() ? otherY - y - 1 + minY : y - minY;
 
                 bool otherOccupied = rotation.onSide() ? otherGrid.checkOccupied(oY, oX) : otherGrid.checkOccupied(oX, oY);
-
-                if(otherOccupied)
+                
+                if (otherOccupied)
                 {
                     setState(newOccupied, x, y);
                     coordinates.Add(new Vector2Int(x, y));
                 }
             }
         }
+        
         return coordinates.ToArray();
     }
 
@@ -286,8 +287,8 @@ public class InventorySpace
             {
                 if(!onlyOccupied || checkOccupied(x, y))
                 {
-                    int oX = rotation.flipX() ? otherX - x - 1 : x;
-                    int oY = rotation.flipY() ? otherY - y - 1 : y;
+                    int oX = rotation.flipX() ? otherX - x - 1 + minX : x - minX;
+                    int oY = rotation.flipY() ? otherY - y - 1 + minY : y - minY;
 
                     bool otherOccupied = rotation.onSide() ? otherGrid.checkOccupied(oY, oX) : otherGrid.checkOccupied(oX, oY);
 
@@ -359,8 +360,8 @@ public class InventorySpace
             {
                 if(checkOccupied(x, y))
                 {
-                    int oX = rotation.flipX() ? otherX - x - 1 : x;
-                    int oY = rotation.flipY() ? otherY - y - 1 : y;
+                    int oX = rotation.flipX() ? otherX - x - 1 + minX : x - minX;
+                    int oY = rotation.flipY() ? otherY - y - 1 + minY : y - minY;
 
                     bool otherOccupied = rotation.onSide() ? otherGrid.checkOccupied(oY, oX) : otherGrid.checkOccupied(oX, oY);
 
@@ -396,8 +397,8 @@ public class InventorySpace
             {
                 if(!checkOccupied(x, y))
                 {
-                    int oX = rotation.flipX() ? otherX - x - 1 : x;
-                    int oY = rotation.flipY() ? otherY - y - 1 : y;
+                    int oX = rotation.flipX() ? otherX - x - 1 + minX : x - minX;
+                    int oY = rotation.flipY() ? otherY - y - 1 + minY : y - minY;
 
                     bool otherOccupied = rotation.onSide() ? otherGrid.checkOccupied(oY, oX) : otherGrid.checkOccupied(oX, oY);
 
