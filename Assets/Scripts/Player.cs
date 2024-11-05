@@ -12,11 +12,12 @@ public class Player : MonoBehaviour
     [SerializeField] private int currentInteractable;
     [SerializeField] private List<InteractableObject> interactables;
 
-    [SerializeField] private Transform cleaningSprayOrigin;
-    [SerializeField] private ParticleSystem cleanerSpray;
-    [SerializeField] private Collider cleanerCollider;
-    [SerializeField] private float consecutiveSprayDelay;
-    private bool sprayingCleaner = false;
+    [SerializeField] private Sprayer sprayer;
+
+    [SerializeField] private Rigidbody rigidBody;
+    [SerializeField] private float characterWeight;
+
+    [SerializeField] private float inventoryWeightMultiplier;
 
     private void Awake()
     {
@@ -24,6 +25,11 @@ public class Player : MonoBehaviour
         {
             interactables = new List<InteractableObject>();
         }
+    }
+
+    private void Start()
+    {
+        updateWeight();
     }
 
     private void FixedUpdate()
@@ -39,40 +45,36 @@ public class Player : MonoBehaviour
 
     public void sprayCleaner()
     {
-        if(!sprayingCleaner)
+        if(sprayer.sprayCleaner())
         {
-            //Debug.Log("Spray started at " + Time.time);
-            cleanerSpray.transform.position = cleaningSprayOrigin.position;
-            cleanerSpray.transform.rotation = cleaningSprayOrigin.rotation;
-            cleanerCollider.gameObject.SetActive(true);
-            sprayingCleaner = true;
-            cleanerSpray.Play();
-            StartCoroutine(sprayComplete());
+            updateWeight();
         }
     }
 
-    private IEnumerator sprayComplete()
+    public void updateWeight()
     {
-        yield return new WaitForSeconds(consecutiveSprayDelay);
-        //Debug.Log("Spray complete at " + Time.time);
-        cleanerCollider.gameObject.SetActive(false);
-        sprayingCleaner = false;
+        float totalWeight = characterWeight;
+        totalWeight += sprayer.getWeight();
+        totalWeight += (inventory.getWeight() * inventoryWeightMultiplier);
+
+        rigidBody.mass = totalWeight;
     }
 
     public void openInventory(InventoryItem item)
     {
         InventoryItem[] items = { item };
         openInventory(items);
-        MenuManager.Instance.openMenu();
     }
 
     public void openInventory(InventoryItem[] items)
     {
         foreach(InventoryItem item in items)
         {
+            MenuManager.Instance.openMenu();
             inventory.items.Add(item);
             item.itemObject.endInteraction(this, true);
             MenuManager.Instance.closeMenu();
+            updateWeight();
         }
     }
 

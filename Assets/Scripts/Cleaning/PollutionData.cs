@@ -1,22 +1,21 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PollutionData", menuName = "Data Objects/PollutionData")]
-public class PollutionData : ScriptableObject
+public class PollutionData : BasicData
 {
-    [SerializeField] private string PollutionName;
-    public string pName
-    {
-        get
-        {
-            return PollutionName;
-        }
-    }
-
     [SerializeField] private Mesh pMesh;
     [SerializeField] private Material pMaterial;
 
     [SerializeField] private Cleaner[] cleaners;
 
+    [SerializeField] private int EnvironmentalImpact;
+    public int envImp
+    {
+        get
+        {
+            return EnvironmentalImpact;
+        }
+    }
 
     public int getCleanerEfectiveness(CleanerData cleaner)
     {
