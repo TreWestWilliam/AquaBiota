@@ -37,13 +37,16 @@ public class MenuManager : MonoBehaviour
             Destroy(Instance);
             Instance = this;
         }
+    }
 
+    public void Start()
+    {
         if (Options.Instance != null)
         {
             OptionsMenu = Options.Instance;
 
         }
-        else { Debug.LogWarning("Options is not currently initialized.",this.gameObject); }
+        else { Debug.LogWarning("Options is not currently initialized.", this.gameObject); }
 
         StartCoroutine(DisablePauseMenuAtStart());
     }
