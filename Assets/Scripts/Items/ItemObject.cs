@@ -90,6 +90,11 @@ public class ItemObject : MonoBehaviour, InteractableObject
         return transform.position;
     }
 
+    public Transform getTransform()
+    {
+        return transform;
+    }
+
     public void beginInteraction(Player player)
     {
         player.openInventory(inventoryItem);

@@ -129,6 +129,7 @@ public class Player : MonoBehaviour
     private void positionInteractUI(InteractableObject interactable)
     {
         interactUI.transform.position = interactable.getPosition();
+        interactUI.transform.SetParent(interactable.getTransform());
     }
 
     private void setSelectedInteractable(InteractableObject interactable)
@@ -159,6 +160,7 @@ public class Player : MonoBehaviour
         if(interactables.Count == 0)
         {
             interactUI.gameObject.SetActive(false);
+            interactUI.transform.SetParent(null);
         }
     }
 

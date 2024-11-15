@@ -1017,6 +1017,7 @@ MonoBehaviour:
   inventoryParent: {fileID: 731848463}
   looseItemParent: {fileID: 174874742}
   inventoryPrefab: {fileID: 0}
+  inventorySlotPrefab: {fileID: 0}
   GridSize: 50
 --- !u!4 &128486557
 Transform:
@@ -15220,9 +15221,6 @@ MonoBehaviour:
   MaxPitch: 60
   _OceanManager: {fileID: 0}
   PlayerCamera: {fileID: 330585545}
-  CameraDistance: 10
-  CameraSensitivityVertical: 7
-  CameraSensitivityHorizontal: 7
 --- !u!54 &621758002
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15977,9 +15975,9 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 5
-      minScalar: 5
+      minMaxState: 3
+      scalar: 2
+      minScalar: 1.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -16085,7 +16083,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.1882353, g: 0.14509805, b: 0.14509805, a: 1}
+      maxColor: {r: 0.1882353, g: 0.14509805, b: 0.14509805, a: 0.78431374}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -16149,8 +16147,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 4
+      scalar: 1
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -16202,8 +16200,8 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 3
+      scalar: 1
+      minScalar: 1.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -16255,8 +16253,8 @@ ParticleSystem:
     startSizeZ:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 4
+      scalar: 1
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -16466,7 +16464,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 30
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 1
     rotation3D: 0
@@ -16609,11 +16607,11 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 0
-    sphericalDirectionAmount: 0
-    randomPositionAmount: 0
+    randomDirectionAmount: 1
+    sphericalDirectionAmount: 0.5
+    randomPositionAmount: 0.3
     radius:
-      value: 0.3
+      value: 0.5
       mode: 0
       spread: 0
       speed:
@@ -16732,8 +16730,8 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4
-      minScalar: 1
+      scalar: 20
+      minScalar: 15
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -39766,7 +39764,10 @@ MonoBehaviour:
     occupiedSpots: 00
   items: []
   background: {fileID: 2014556406}
+  nameText: {fileID: 0}
+  gridParent: {fileID: 0}
   itemParent: {fileID: 879154487}
+  inventorySlotPrefab: {fileID: 0}
 --- !u!1 &2064656278
 GameObject:
   m_ObjectHideFlags: 0
