@@ -40,10 +40,10 @@ public class Pollutant : MonoBehaviour
         if(particles != null)
         {
             ParticleSystem.MainModule main = particles.main;
-            main.maxParticles = (Befoulment / 2) + (Befoulment % 2);
+            main.maxParticles = Befoulment;// (Befoulment / 2) + (Befoulment % 2);
             ParticleSystem.EmissionModule emissions = particles.emission;
-            float rate = Mathf.Ceil((float)Befoulment / 5f);
-            emissions.rateOverTime = new ParticleSystem.MinMaxCurve(rate, rate + 3);
+            float rate = Mathf.Ceil((float)Befoulment / 2f);//5f);
+            emissions.rateOverTime = new ParticleSystem.MinMaxCurve(rate, rate * 1.5f);// 3);
         }
     }
 
