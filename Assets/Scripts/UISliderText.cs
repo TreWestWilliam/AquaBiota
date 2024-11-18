@@ -13,6 +13,7 @@ public class UISliderText : MonoBehaviour
     //Reference for formatting this style of string interpolation:
     //https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated
     public void SliderChange(float val) {
-        _Text.text = $"{val:F2}";
+        if(_Text!=null)
+            _Text.text = $"{val:F2}";
     }
 }
