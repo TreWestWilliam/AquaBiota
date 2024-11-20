@@ -12,7 +12,7 @@ public class Options : MonoBehaviour
     public Settings _Settings;
     public CameraOrbit Camera;
     public GameObject MenuGO;
-
+    
     [Header("UI")]
     [SerializeField] private Slider CamVSensitivity;
     [SerializeField] private Slider CamHSensitivity;
@@ -32,6 +32,9 @@ public class Options : MonoBehaviour
 
     void Awake()
     {
+        //hide menu on start
+        CloseMenu();
+
         FilePath = Application.persistentDataPath + "/settings.xml";
         if (Instance != null) { Destroy(this.gameObject); }
         Instance = this;
@@ -52,12 +55,6 @@ public class Options : MonoBehaviour
         //Loading Values onto stuff;
     }
     
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ToggleCameraVertical(bool t) 
     {
         _Settings.CameraVInverse = t;
@@ -124,8 +121,7 @@ public class Options : MonoBehaviour
     {
         _Settings.CameraV = CamVSensitivity.value;
         _Settings.CameraH = CamHSensitivity.value;        
-        Camera.LoadSettings(_Settings);
-
+        
         if(!masterVolume.VolumeToggle.isOn)
             _Settings.setVolumeVal(masterVolume.name, (int)masterVolume.VolumeSlider.value);
         if (!musicVolume.VolumeToggle.isOn)
@@ -137,6 +133,7 @@ public class Options : MonoBehaviour
         if (!uiVolume.VolumeToggle.isOn)
             _Settings.setVolumeVal(uiVolume.name, (int)uiVolume.VolumeSlider.value);
         
+        Camera.LoadSettings(_Settings);
         SaveSettings();
     }
     /*
