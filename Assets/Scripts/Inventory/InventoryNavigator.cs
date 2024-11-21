@@ -120,6 +120,7 @@ public class InventoryNavigator : MonoBehaviour
         else
         {
             heldItem = inventory.GetItemByCoordinate(currentPosition);
+            if(heldItem == null) return;
             inventory.remove(heldItem);
 
             Color imageColor = heldItem.image.color;

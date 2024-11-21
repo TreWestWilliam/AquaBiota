@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -48,7 +49,7 @@ public class InventorySpace
     public InventorySpace(InventorySpace original)
     {
         Size = original.size;
-        occupiedSpots = original.occupiedSpots;
+        occupiedSpots = original.occupiedSpots.ToArray<bool>();
     }
 
     public InventorySpace(InventorySpace original, Rotation rotation)
