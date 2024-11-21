@@ -17,8 +17,11 @@ public class PlayerControllerSwimming : MonoBehaviour
     public float RotationalSpeed = 5;
     public float SwimBoostSpeed = 20;
     public float MaxPitch = 60;
+    public float MaxVelocity = 30;
     [SerializeField] private OceanManager _OceanManager;
     public Camera PlayerCamera;
+
+    public Animator _Animator;
 
 
 
@@ -29,14 +32,26 @@ public class PlayerControllerSwimming : MonoBehaviour
         // Lock the cursor on start for mouse+keyboard input
         Cursor.lockState= CursorLockMode.Locked;
         Cursor.visible = false;
-        
+
+        if (_Animator == null)
+        {
+            Animator ani = GetComponentInChildren<Animator>();
+            if (ani != null)
+            {
+                _Animator = ani;
+            }
+            else 
+            {
+                Debug.LogWarning("The Animator property was not set in Editor, and we couldn't guess where the proper animator is.");
+            }
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         Vector2 MovementInput = _PlayerInput.actions["Move"].ReadValue<Vector2>();
-        MovementInput *= /*Time.deltaTime **/ Movespeed;
+        MovementInput *=  Movespeed;
 
         float TargetPitch = 0;
         var TargetUp = _PlayerInput.actions["SwimUp"].ReadValue<float>();
@@ -63,13 +78,18 @@ public class PlayerControllerSwimming : MonoBehaviour
         _Rigidbody.MoveRotation( Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(TargetPitch,(PlayerCamera.transform.rotation.eulerAngles.y - Vector2.SignedAngle(Vector2.up, MovementInput)),0)  ), RotationalSpeed  * _Rigidbody.linearVelocity.normalized.magnitude));
 
 
+        //Animation stuff
+
+        _Animator.SetFloat("Velocity", _Rigidbody.linearVelocity.magnitude);
+        _Animator.SetFloat("SpeedMultiplier", 1 + (_Rigidbody.linearVelocity.magnitude / Movespeed ) );
+
         
     }
     // We may wish to adjust the forward momentum gain in the future since it's quite significant
     public void SwimUp(CallbackContext callbackContext) 
     {
         //TODO COOLDOWNS? (Probably through coroutines or something)
-        _Rigidbody.AddForce(transform.up *VerticalMovespeed + (transform.forward * SwimBoostSpeed));
+        _Rigidbody.AddForce(transform.up *VerticalMovespeed);
 
         //Jumping if at the water's surface.
         if (transform.position.y > OceanManager.instance.waveHeight(transform.position.x, transform.position.z, Time.time))
@@ -81,7 +101,19 @@ public class PlayerControllerSwimming : MonoBehaviour
 
     public void SwimDown(CallbackContext callback) 
     {
-        _Rigidbody.AddForce(-transform.up *VerticalMovespeed + (transform.forward * SwimBoostSpeed));
+        _Rigidbody.AddForce(-transform.up *VerticalMovespeed);
+    }
+
+    public void SwimBoost(CallbackContext callbackContext)
+    {
+        if (transform.position.y > OceanManager.instance.waveHeight(transform.position.x, transform.position.z, Time.time))
+        {
+            if (_Rigidbody.linearVelocity.magnitude < MaxVelocity)
+            {
+                Debug.Log($"Current velocity {_Rigidbody.linearVelocity.magnitude} versus max velocity {MaxVelocity}");
+                _Rigidbody.AddForce(transform.forward * SwimBoostSpeed);
+            }
+        }
     }
 
     public void Interact(CallbackContext callbackContext)
@@ -120,6 +152,9 @@ public class PlayerControllerSwimming : MonoBehaviour
             }
         }
     }
+
+    
+
 
     //These functions were from testing, didn't work out since it only moved whenver the controller changed directions
 
