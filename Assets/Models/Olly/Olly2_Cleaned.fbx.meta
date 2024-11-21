@@ -3,7 +3,37 @@ guid: 70b28398ff904dd449537899fcc330fd
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Helm2
+    second: {fileID: 2100000, guid: a5d101c94ce61994580f6bb4b97bc512, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 5583c5d1e859dac479c02ff8cb090af6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin
+    second: {fileID: 2100000, guid: 798afe03f69364041837e8b6e61acb37, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: helm
+    second: {fileID: 2100000, guid: 21214d84f58e0994aa295ddf82e1721d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pants
+    second: {fileID: 2100000, guid: 1a55b3c410da3244dab7a9c999c9ecc1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: visor
+    second: {fileID: 2100000, guid: 534eed55e6ca5dd47aa1123676e5c3c4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -68,7 +98,7 @@ ModelImporter:
     useFileScale: 1
     strictVertexDataChecks: 0
   tangentSpace:
-    normalSmoothAngle: 60
+    normalSmoothAngle: 114
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4

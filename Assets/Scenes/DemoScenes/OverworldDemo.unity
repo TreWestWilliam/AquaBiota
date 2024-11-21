@@ -1186,6 +1186,7 @@ MonoBehaviour:
   inventoryParent: {fileID: 1666355883}
   looseItemParent: {fileID: 1190774509}
   inventoryPrefab: {fileID: 0}
+  inventorySlotPrefab: {fileID: 0}
   GridSize: 50
 --- !u!4 &58789544
 Transform:
@@ -3627,8 +3628,8 @@ Transform:
   m_GameObject: {fileID: 379998581}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -4.5, y: 2.79, z: 15.85}
-  m_LocalScale: {x: 1, y: 4.0522, z: 23.875515}
+  m_LocalPosition: {x: -3.7561, y: 2.79, z: 15.85}
+  m_LocalScale: {x: 1, y: 4.0522, z: 22.386112}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5810,10 +5811,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5507788168761890105, guid: f3b00afc10f475b4da882da94a4963d8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 21214d84f58e0994aa295ddf82e1721d, type: 2}
+    - target: {fileID: -5507788168761890105, guid: f3b00afc10f475b4da882da94a4963d8, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a5d101c94ce61994580f6bb4b97bc512, type: 2}
+    - target: {fileID: -5507788168761890105, guid: f3b00afc10f475b4da882da94a4963d8, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 534eed55e6ca5dd47aa1123676e5c3c4, type: 2}
+    - target: {fileID: -3488063919645288440, guid: f3b00afc10f475b4da882da94a4963d8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 798afe03f69364041837e8b6e61acb37, type: 2}
     - target: {fileID: 919132149155446097, guid: f3b00afc10f475b4da882da94a4963d8, type: 3}
       propertyPath: m_Name
       value: OllyWalk
       objectReference: {fileID: 0}
+    - target: {fileID: 2314662619512783284, guid: f3b00afc10f475b4da882da94a4963d8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 798afe03f69364041837e8b6e61acb37, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2654713335656134247, guid: f3b00afc10f475b4da882da94a4963d8, type: 3}
@@ -26234,8 +26255,8 @@ Transform:
   m_GameObject: {fileID: 919829795}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.3500004, y: -1.9790001, z: 4.8780003}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 7.35, y: -1.7286, z: 4.8780003}
+  m_LocalScale: {x: 1, y: 1.243, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1370875087}
@@ -29998,6 +30019,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: be4e682d-0651-4a45-a801-f97078c36e13
     m_ActionName: 'PauseMenu/UnPause[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 267ab968-a451-406f-bfd7-9bb118bd7482
+    m_ActionName: 'UI/Rotate[/Keyboard/q,/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: aabd0a72-d6bc-4e3c-acb5-3403355da1e9
+    m_ActionName: 'UI/Flip[/Keyboard/r,/Keyboard/f]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -31664,7 +31693,7 @@ Transform:
   m_GameObject: {fileID: 1382651963}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.95, y: 1.25, z: 9.13}
+  m_LocalPosition: {x: 3.05, y: 1.25, z: 10.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37779,7 +37808,10 @@ MonoBehaviour:
     occupiedSpots: 00
   items: []
   background: {fileID: 1892123852}
+  nameText: {fileID: 0}
+  gridParent: {fileID: 0}
   itemParent: {fileID: 69866841}
+  inventorySlotPrefab: {fileID: 0}
 --- !u!114 &1892123852
 MonoBehaviour:
   m_ObjectHideFlags: 0

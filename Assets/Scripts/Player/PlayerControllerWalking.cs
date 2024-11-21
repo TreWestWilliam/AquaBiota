@@ -54,7 +54,10 @@ public class PlayerControllerWalking : MonoBehaviour
             GroundNormal = new Vector3(0, (1-GroundNormal.y), 0);
             IsGrounded = true;
         }
-        else { IsGrounded = false; }
+        else 
+        { 
+            IsGrounded = false; 
+        }
         //Slope ray is here to see if there's a slope infront of the player, and enables us to climb it better by adding upwards momentum.
         RaycastHit SlopeRay;
         if (Physics.Raycast(transform.position, -transform.up + transform.forward, out SlopeRay, 1.5f)) 
@@ -100,21 +103,19 @@ public class PlayerControllerWalking : MonoBehaviour
         float AnimSpeed=  Mathf.Max(.1f, MovementInput.magnitude);
         _Animator.SetFloat("Movespeed", AnimSpeed);
         //Todo: Jump animations
-
-        //Basic orbiting camera
-        /*
-        Vector2 CameraInput = _PlayerInput.actions["Look"].ReadValue<Vector2>();
-        PlayerCamera.transform.position += PlayerCamera.transform.right * CameraInput.x * Time.deltaTime + PlayerCamera.transform.up * CameraInput.y * Time.deltaTime;
-        PlayerCamera.transform.LookAt(transform);
-        PlayerCamera.transform.position = transform.position - PlayerCamera.transform.forward * CameraDistance;
-        */
+        //Falling animation
+        _Animator.SetBool("IsFalling", (IsGrounded && (_Rigidbody.linearVelocity.y < 0) ) );
 
     }
 
     public void Jump(CallbackContext callbackContext) 
     {
         if (IsGrounded)
+        {
             _Rigidbody.AddForce(JumpPower * transform.up);
+            _Animator.SetTrigger("Jump");
+        }
+            
     }
 
     public void Pause(CallbackContext callbackContext) 
