@@ -106,12 +106,12 @@ public class PlayerControllerSwimming : MonoBehaviour
 
     public void SwimBoost(CallbackContext callbackContext)
     {
-        if (transform.position.y > OceanManager.instance.waveHeight(transform.position.x, transform.position.z, Time.time))
+        if (transform.position.y < OceanManager.instance.waveHeight(transform.position.x, transform.position.z, Time.time))
         {
             if (_Rigidbody.linearVelocity.magnitude < MaxVelocity)
             {
                 Debug.Log($"Current velocity {_Rigidbody.linearVelocity.magnitude} versus max velocity {MaxVelocity}");
-                _Rigidbody.AddForce(transform.forward * SwimBoostSpeed);
+                _Rigidbody.AddForce(transform.forward * SwimBoostSpeed, ForceMode.Impulse);
             }
         }
     }
