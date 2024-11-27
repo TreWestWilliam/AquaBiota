@@ -7,18 +7,15 @@ public class VolumeSetting : MonoBehaviour {
     public Toggle VolumeToggle;
     public TMP_Text VolumeText;
 
-    // Update is called once per frame
-    void Update() {
-        //turn off volume toggle when slider changes
-        if (VolumeSlider.value > 0 && VolumeToggle.isOn) {
-            int val = (int)VolumeSlider.value;
-            VolumeToggle.isOn = false;
-            VolumeSlider.value = val;
-        }
-    }
     public void VolumeChange(float val) {
         if (VolumeText != null)
             VolumeText.text = $"{(int)val}";
+        
+        //turn off volume toggle when slider changes
+        if (val > 0 && VolumeToggle.isOn) {
+            VolumeToggle.isOn = false;
+            VolumeSlider.value = val;
+        }
     }
     public void toggleVolume(ref Settings _Settings, bool t) {
         _Settings.setMuteVolume(name, t);
