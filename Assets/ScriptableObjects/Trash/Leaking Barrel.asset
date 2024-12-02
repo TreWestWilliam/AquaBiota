@@ -18,8 +18,8 @@ MonoBehaviour:
     ConstantValue: {fileID: 3286163911610860551, guid: 173706ac4d204b04daafdc574a1f01d8, type: 3}
     Variable: {fileID: 0}
   Description: 
-  ItemObjectPrefab: {fileID: 2536210784686230579, guid: 8a21a1cb1057cae48ad0d01c87177729, type: 3}
-  InventoryItemPrefab: {fileID: 3522992871568790460, guid: 7678439f0044313408c7ff2a59ab6251, type: 3}
+  ItemObjectPrefab: {fileID: 582142922450596589, guid: f92cfab5030f1ce49a20a928afbcf833, type: 3}
+  InventoryItemPrefab: {fileID: 3522992871568790460, guid: 01dc57bb0b6db3040aa007f6a4e3da1a, type: 3}
   InventoryShape:
     Size: {x: 2, y: 3}
     occupiedSpots: 010101010101
