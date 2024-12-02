@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92aee32ec737a3142a98c6f080aada17, type: 3}
+  m_Name: Bottle
+  m_EditorClassIdentifier: 
+  DataName: Bottle
+  dataSprite:
+    UseConstant: 1
+    ConstantValue: {fileID: 3286163911610860551, guid: 173706ac4d204b04daafdc574a1f01d8, type: 3}
+    Variable: {fileID: 0}
+  Description: 
+  ItemObjectPrefab: {fileID: 8845394247719314703, guid: 3196a1438f873d34f9b642c4ce2c8182, type: 3}
+  InventoryItemPrefab: {fileID: 1831920406304433546, guid: 979539ac20272c446a78883f7d060b72, type: 3}
+  InventoryShape:
+    Size: {x: 1, y: 1}
+    occupiedSpots: 01
+  IsContainer: 0
+  ContentsShape:
+    Size: {x: 1, y: 1}
+    occupiedSpots: 00
+  ContentsBackground:
+    UseConstant: 1
+    ConstantValue: {fileID: 0}
+    Variable: {fileID: 0}
+  Weight:
+    UseConstant: 1
+    ConstantValue: 1
+    Variable: {fileID: 0}
+  Buoyancy:
+    UseConstant: 1
+    ConstantValue: -1
+    Variable: {fileID: 0}
+  Drag:
+    UseConstant: 1
+    ConstantValue: 1
+    Variable: {fileID: 0}
+  Value:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  Tags: 04000000
+  PickupSound: {fileID: 0}

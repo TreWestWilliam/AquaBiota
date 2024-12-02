@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92aee32ec737a3142a98c6f080aada17, type: 3}
+  m_Name: Fishing Box
+  m_EditorClassIdentifier: 
+  DataName: Fishing Box
+  dataSprite:
+    UseConstant: 1
+    ConstantValue: {fileID: 3286163911610860551, guid: e0b2299578e922d45bbc5f9b806702f7, type: 3}
+    Variable: {fileID: 0}
+  Description: 
+  ItemObjectPrefab: {fileID: 4249121564676883733, guid: f5c3a640359c1e347a62c403f1b614ae, type: 3}
+  InventoryItemPrefab: {fileID: 4764233660353378789, guid: 71c4e8b2e22244747b9ef4a20156aff5, type: 3}
+  InventoryShape:
+    Size: {x: 2, y: 2}
+    occupiedSpots: 01010101
+  IsContainer: 0
+  ContentsShape:
+    Size: {x: 1, y: 1}
+    occupiedSpots: 00
+  ContentsBackground:
+    UseConstant: 1
+    ConstantValue: {fileID: 0}
+    Variable: {fileID: 0}
+  Weight:
+    UseConstant: 1
+    ConstantValue: 2
+    Variable: {fileID: 0}
+  Buoyancy:
+    UseConstant: 1
+    ConstantValue: -1
+    Variable: {fileID: 0}
+  Drag:
+    UseConstant: 1
+    ConstantValue: 1
+    Variable: {fileID: 0}
+  Value:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  Tags: 0400000015000000
+  PickupSound: {fileID: 0}
