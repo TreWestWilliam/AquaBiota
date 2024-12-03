@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92aee32ec737a3142a98c6f080aada17, type: 3}
+  m_Name: Leaking Barrel
+  m_EditorClassIdentifier: 
+  DataName: Leaking Barrel
+  dataSprite:
+    UseConstant: 1
+    ConstantValue: {fileID: 3286163911610860551, guid: 173706ac4d204b04daafdc574a1f01d8, type: 3}
+    Variable: {fileID: 0}
+  Description: 
+  ItemObjectPrefab: {fileID: 582142922450596589, guid: f92cfab5030f1ce49a20a928afbcf833, type: 3}
+  InventoryItemPrefab: {fileID: 3522992871568790460, guid: 01dc57bb0b6db3040aa007f6a4e3da1a, type: 3}
+  InventoryShape:
+    Size: {x: 2, y: 3}
+    occupiedSpots: 010101010101
+  IsContainer: 0
+  ContentsShape:
+    Size: {x: 1, y: 2}
+    occupiedSpots: 0000
+  ContentsBackground:
+    UseConstant: 1
+    ConstantValue: {fileID: 0}
+    Variable: {fileID: 0}
+  Weight:
+    UseConstant: 1
+    ConstantValue: 8
+    Variable: {fileID: 0}
+  Buoyancy:
+    UseConstant: 1
+    ConstantValue: -4
+    Variable: {fileID: 0}
+  Drag:
+    UseConstant: 1
+    ConstantValue: 3
+    Variable: {fileID: 0}
+  Value:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  Tags: 0400000016000000
+  PickupSound: {fileID: 0}
