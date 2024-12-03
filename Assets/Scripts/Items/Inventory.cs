@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
+    // defines the boundaries of the inventory
     public InventorySpace space;
-
+    // combination of space boundaries and items placed
     public InventorySpace contents;
 
     public List<InventoryItem> items;
@@ -21,6 +22,7 @@ public class Inventory : MonoBehaviour
 
     public GameObject inventorySlotPrefab;
     public GameObject[,] inventorySlots;
+    [SerializeField] private GameObject tossSlot;
 
     private void Awake()
     {
@@ -51,6 +53,7 @@ public class Inventory : MonoBehaviour
                 inventorySlots[j, i].transform.localScale = new Vector3(1, 1, 1); // Needed to fix scaling
             }
         }
+        tossSlot.transform.localPosition = new Vector2((-50 * space.size.x) - 50, (50 * space.size.y) - 125);
 
         nameText.text = this.name;
     }
@@ -64,7 +67,7 @@ public class Inventory : MonoBehaviour
     {
         item.position = position;
 
-        if (!space.checkFitAndOverlap(item.itemData.inventoryShape, position, item.rotation))
+        if (!contents.checkFitAndOverlap(item.itemData.inventoryShape, position, item.rotation))
         {
             Debug.Log("Item cannot fit");
             return false;
