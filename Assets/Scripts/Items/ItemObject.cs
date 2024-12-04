@@ -97,7 +97,7 @@ public class ItemObject : MonoBehaviour, InteractableObject
 
     public void beginInteraction(Player player)
     {
-        player.openInventory(inventoryItem);
+        player.openInventory(this);
     }
 
     public void endInteraction(Player player, bool confirmed)

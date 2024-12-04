@@ -1,8 +1,6 @@
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
-using static UnityEditor.Progress;
 
 public class InventoryNavigator : MonoBehaviour
 {
@@ -80,6 +78,11 @@ public class InventoryNavigator : MonoBehaviour
     }
     public void CloseInventory()
     {
+        if (holdingItem) 
+        {
+            // Spawn item in worlspace if we have an item held on close
+            InventoriesManager.instance.CreateObjectAtPlayer(heldItem.itemData);
+        }
         inventoryOpen = false;
         selectionBox.SetActive(false);
     }

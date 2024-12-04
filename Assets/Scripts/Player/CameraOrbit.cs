@@ -5,6 +5,7 @@ public class CameraOrbit : MonoBehaviour
 {
     [Header("Camera Controls")]
     public Camera PlayerCamera;
+
     public PlayerInput _PlayerInput;
     public GameObject Target;
     public float CameraDistance = 10;
@@ -14,21 +15,19 @@ public class CameraOrbit : MonoBehaviour
     public float MaxXRot = 85;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        if (PlayerCamera == null ) { PlayerCamera= this.GetComponent<Camera>(); }
+        if (PlayerCamera == null) { PlayerCamera = this.GetComponent<Camera>(); }
         if (_PlayerInput == null) { Debug.Log("Camera's PlayerInput isnt set"); _PlayerInput = GameObject.FindAnyObjectByType<PlayerInput>(); }
         if (Target == null) { Debug.Log("Camera has no target object."); }
         LoadSettings(Options.Instance._Settings);
-
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         //Basic orbiting camera
         Vector2 CameraInput = _PlayerInput.actions["Look"].ReadValue<Vector2>();
-
 
         transform.position += PlayerCamera.transform.right * CameraInput.x * CameraSensitivityHorizontal * Time.fixedDeltaTime + PlayerCamera.transform.up * CameraInput.y * CameraSensitivityVertical * Time.fixedDeltaTime;
         transform.LookAt(Target.transform);
@@ -49,10 +48,8 @@ public class CameraOrbit : MonoBehaviour
             //transform.position = Target.transform.position - PlayerCamera.transform.forward * CameraDistance;
         }
         transform.position = Target.transform.position - PlayerCamera.transform.forward * CameraDistance;
-
     }
-
-    public void LoadSettings(Settings s) 
+    public void LoadSettings(Settings s)
     {
         CameraSensitivityVertical = s.CameraV;
 
@@ -60,5 +57,5 @@ public class CameraOrbit : MonoBehaviour
 
         CameraSensitivityHorizontal = s.CameraH;
         if (s.CameraHInverse) { CameraSensitivityHorizontal *= -1; }
-    } 
+    }
 }
