@@ -12,5 +12,5 @@ Credits:\
  @Garrett - Programmer \
  @xanib. - Producer \
  @WOWEE / Skulldr0p - 3D Game Artist \
- Eriyon Smith - 3D Game Artist 
-@Dz - Junior Programmer
+ Eriyon Smith - 3D Game Artist \
+ @Dz - Junior Programmer
