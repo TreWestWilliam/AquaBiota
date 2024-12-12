@@ -54,10 +54,12 @@ public class Player : MonoBehaviour
     public void updateWeight()
     {
         float totalWeight = characterWeight;
-        totalWeight += sprayer.getWeight();
-        totalWeight += (inventory.getWeight() * inventoryWeightMultiplier);
-
-        rigidBody.mass = totalWeight;
+        if(sprayer!=null)
+            totalWeight += sprayer.getWeight();
+        if (inventory != null) 
+            totalWeight += (inventory.getWeight() * inventoryWeightMultiplier);
+        if (rigidBody != null)
+            rigidBody.mass = totalWeight;
     }
 
     public void openInventory(InventoryItem item)

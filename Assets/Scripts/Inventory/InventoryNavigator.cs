@@ -1,8 +1,6 @@
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
-using static UnityEditor.Progress;
 
 public class InventoryNavigator : MonoBehaviour
 {
