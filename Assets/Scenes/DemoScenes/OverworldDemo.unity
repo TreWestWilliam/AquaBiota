@@ -26372,6 +26372,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197893910}
   m_CullTransparentMesh: 1
+--- !u!114 &1204910215 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1377163569374940045, guid: d7d7622d3fcb4ca4a87559ed485ca3b0, type: 3}
+  m_PrefabInstance: {fileID: 1567611639}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49bb53ac07756843b70716770fc1f98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1226786524
 Mesh:
   m_ObjectHideFlags: 0
@@ -35665,15 +35676,18 @@ MonoBehaviour:
     CameraVInverse: 0
     CameraHInverse: 0
     muteMasterVol: 0
-    masterVolVal: 0
     muteMusicVol: 0
-    musicVolVal: 0
     muteAmbientVol: 0
-    ambientVolVal: 0
     muteSfxVol: 0
-    sfxVolVal: 0
     muteUiVol: 0
+    masterVolVal: 0
+    musicVolVal: 0
+    ambientVolVal: 0
+    sfxVolVal: 0
     UiVolVal: 0
+    fullscreen: 0
+    vsync: 0
+    resolutionIndex: 0
   Camera: {fileID: 1361267992}
   MenuGO: {fileID: 1972155588}
   CamVSensitivity: {fileID: 1238555208}
@@ -35687,6 +35701,7 @@ MonoBehaviour:
   ambientVolume: {fileID: 2124896600}
   sfxVolume: {fileID: 350037325}
   uiVolume: {fileID: 49502615}
+  graphicSetting: {fileID: 1204910215}
 --- !u!1 &1892123849
 GameObject:
   m_ObjectHideFlags: 0
@@ -35751,6 +35766,7 @@ MonoBehaviour:
   gridParent: {fileID: 0}
   itemParent: {fileID: 69866841}
   inventorySlotPrefab: {fileID: 0}
+  tossSlot: {fileID: 0}
 --- !u!114 &1892123852
 MonoBehaviour:
   m_ObjectHideFlags: 0

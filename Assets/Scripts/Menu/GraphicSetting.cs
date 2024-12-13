@@ -7,25 +7,27 @@ public class GraphicSetting : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown dropdown;
     [SerializeField] private List<resItem> resolutions = new List<resItem>();
+    [SerializeField] private Toggle fullscreenTog, vsyncTog;
 
-    private bool fullscreen;
-    private int width, height;
-
-    public void Awake() {
-        fullscreen = Screen.fullScreen;
-        width = Screen.width;
-        height = Screen.height;
-    }
-    public void toggleFullscreen(bool t) {
-        fullscreen = t;
-    }
-    public void getDropdownValue() {
-        int val = dropdown.value;
-        width = resolutions[val].width;
-        height = resolutions[val].height;
-    }
     public void applySettings() {
-        Screen.SetResolution(width, height, fullscreen);
+        Screen.SetResolution(resolutions[dropdown.value].width, resolutions[dropdown.value].height, fullscreenTog.isOn);
+        if (vsyncTog.isOn)
+            QualitySettings.vSyncCount = 1;
+        else
+            QualitySettings.vSyncCount = 0;
+    }
+    
+    public void saveSettings(ref Settings _Settings) {
+        _Settings.fullscreen = fullscreenTog.isOn;
+        _Settings.vsync = vsyncTog.isOn;
+        _Settings.resolutionIndex = dropdown.value;
+    }
+    public void loadSettings(Settings _Settings) {
+        fullscreenTog.isOn = _Settings.fullscreen;
+        vsyncTog.isOn = _Settings.vsync;
+        dropdown.value = _Settings.resolutionIndex;
+        
+        applySettings();
     }
 }
 
