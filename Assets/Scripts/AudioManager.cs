@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource sfxPrefab;
 
+    /*
     private void Awake()
     {
         if(instance != null)
@@ -20,7 +21,7 @@ public class AudioManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-    }
+    }*/
 
 
     #region Controls

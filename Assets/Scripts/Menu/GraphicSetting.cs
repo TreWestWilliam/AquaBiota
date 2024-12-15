@@ -26,7 +26,6 @@ public class GraphicSetting : MonoBehaviour
         fullscreenTog.isOn = _Settings.fullscreen;
         vsyncTog.isOn = _Settings.vsync;
         dropdown.value = _Settings.resolutionIndex;
-        
         applySettings();
     }
 }

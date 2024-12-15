@@ -47,6 +47,7 @@ public class Options : MonoBehaviour
             _Settings = LoadSettings();
             LoadValues();
             Camera.LoadSettings(_Settings);
+            graphicSetting.loadSettings(_Settings);
         }
         else 
         {
@@ -179,8 +180,7 @@ public struct Settings
     public bool CameraVInverse;
     public bool CameraHInverse;
 
-    //volume settings
-    #region
+    #region Volume Settings
     public bool muteMasterVol, muteMusicVol, muteAmbientVol, muteSfxVol, muteUiVol;
     public int masterVolVal, musicVolVal, ambientVolVal, sfxVolVal, UiVolVal;
 
