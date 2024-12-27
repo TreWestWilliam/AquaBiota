@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92aee32ec737a3142a98c6f080aada17, type: 3}
   m_Name: Surf Board Top
   m_EditorClassIdentifier: 
-  DataName: Tire
+  DataName: Surf Board Top
   dataSprite:
     UseConstant: 1
     ConstantValue: {fileID: 3286163911610860551, guid: 4d2f19d9b78326f4abb2e78b8b69d922, type: 3}
