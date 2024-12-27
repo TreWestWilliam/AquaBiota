@@ -21,7 +21,7 @@ MonoBehaviour:
   ItemObjectPrefab: {fileID: 0}
   InventoryItemPrefab: {fileID: 0}
   InventoryShape:
-    Size: {x: 1, y: 2}
+    Size: {x: 2, y: 1}
     occupiedSpots: 0101
   IsContainer: 0
   ContentsShape:
@@ -29,7 +29,7 @@ MonoBehaviour:
     occupiedSpots: 00
   ContentsBackground:
     UseConstant: 1
-    ConstantValue: {fileID: 0}
+    ConstantValue: {fileID: 3286163911610860551, guid: cfb2a686c5ab60241b581e1019a17499, type: 3}
     Variable: {fileID: 0}
   Weight:
     UseConstant: 1

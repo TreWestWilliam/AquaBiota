@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/DemoScenes/Demo_Title.unity
-    guid: 6d645a0fb2b0d1a4a8ff124c4ab685bf
+    path: Assets/Scenes/DemoSprint2/Title_Sprint2.unity
+    guid: 3e0e2cbabfb04534ba8bf0d482ca7322
   - enabled: 1
-    path: Assets/Scenes/DemoScenes/SwimTest.unity
-    guid: e624c665b9521264e8ea6fba275eb298
+    path: Assets/Scenes/DemoSprint2/Overworld_Sprint2.unity
+    guid: 4a229ba8d8082b94e8402731a5dc6996
   - enabled: 1
-    path: Assets/Scenes/DemoScenes/OverworldDemo.unity
-    guid: 5ccb5440513905b43b624f3e54ca4c5b
+    path: Assets/Scenes/DemoSprint2/ExplorationDemo.unity
+    guid: 89afbf946504076438a48f96ce3cf313
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: e20246320ab63fa43a602cd04d6674aa, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

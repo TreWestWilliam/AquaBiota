@@ -29,7 +29,7 @@ MonoBehaviour:
     occupiedSpots: 00
   ContentsBackground:
     UseConstant: 1
-    ConstantValue: {fileID: 0}
+    ConstantValue: {fileID: 3286163911610860551, guid: e0b2299578e922d45bbc5f9b806702f7, type: 3}
     Variable: {fileID: 0}
   Weight:
     UseConstant: 1

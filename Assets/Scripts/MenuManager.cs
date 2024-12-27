@@ -13,6 +13,9 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] private EventSystem eventSystem;
     [SerializeField] private PauseMenu pauseMenu;
+    [SerializeField] private InventoriesManager inventoriesManager;
+    [SerializeField] private DialogueManager dialogueManager;
+
     private Options OptionsMenu;
 
     [SerializeField] private PlayerInput playerInput;
@@ -21,6 +24,8 @@ public class MenuManager : MonoBehaviour
 
     [HideInInspector] public bool inMenu = false;
     [HideInInspector] public bool isPaused = false;
+
+    public MenuState menuState = MenuState.playing;
 
     private bool usingMnK = true;
 
@@ -37,6 +42,14 @@ public class MenuManager : MonoBehaviour
             Destroy(Instance);
             Instance = this;
         }
+
+        if (inventoriesManager == null)
+        {
+            inventoriesManager = InventoriesManager.instance;
+        }
+
+        // inventoriesManager.CreateDemoInventory();
+
     }
 
     public void Start()
@@ -65,11 +78,11 @@ public class MenuManager : MonoBehaviour
 
     public void usingMouseAndKeyboard()
     {
-        if(!usingMnK)
+        if (!usingMnK)
         {
             //Debug.Log("Using Mouse and Keyboard");
             usingMnK = true;
-            if(inMenu || isPaused)
+            if (inMenu || isPaused)
             {
                 showMouse();
             }
@@ -78,11 +91,11 @@ public class MenuManager : MonoBehaviour
 
     public void usingGamepad()
     {
-        if(usingMnK)
+        if (usingMnK)
         {
             //Debug.Log("Using Gamepad");
             usingMnK = false;
-            if(inMenu || isPaused)
+            if (inMenu || isPaused)
             {
                 hideMouse();
             }
@@ -103,10 +116,10 @@ public class MenuManager : MonoBehaviour
 
     public void openMenu()
     {
-        if(!inMenu)
+        if (!inMenu)
         {
             inMenu = true;
-            if(usingMnK)
+            if (usingMnK)
             {
                 showMouse();
             }
@@ -115,10 +128,10 @@ public class MenuManager : MonoBehaviour
 
     public void closeMenu()
     {
-        if(inMenu)
+        if (inMenu)
         {
             inMenu = false;
-            if(usingMnK)
+            if (usingMnK)
             {
                 hideMouse();
             }
@@ -128,15 +141,16 @@ public class MenuManager : MonoBehaviour
     public void openPauseMenu()
     {
         //Debug.Log("Opening pause menu by " + playerInput.currentActionMap.name + ".");
-        if(!isPaused)
+        if (!isPaused)
         {
+            menuState = MenuState.pauseMenus;
             isPaused = true;
             EventSystem.current.SetSelectedGameObject(pauseMenu.resumeButton.gameObject);
             priorActionMap = playerInput.currentActionMap.name;
             playerInput.SwitchCurrentActionMap("PauseMenu");
             Time.timeScale = 0;
             pauseMenu.gameObject.SetActive(true);
-            if(usingMnK)
+            if (usingMnK)
             {
                 showMouse();
             }
@@ -146,13 +160,14 @@ public class MenuManager : MonoBehaviour
     public void closePauseMenu()
     {
         //Debug.Log("Closing pause menu by " + playerInput.currentActionMap.name + ".");
-        if(isPaused)
+        if (isPaused)
         {
+            menuState = MenuState.playing;
             pauseMenu.gameObject.SetActive(false);
             Time.timeScale = 1;
             playerInput.SwitchCurrentActionMap(priorActionMap);
             isPaused = false;
-            if(usingMnK && !inMenu)
+            if (usingMnK && !inMenu)
             {
                 hideMouse();
             }
@@ -161,7 +176,7 @@ public class MenuManager : MonoBehaviour
 
     public void togglePauseMenu()
     {
-        if(isPaused)
+        if (isPaused)
         {
             closePauseMenu();
         }
@@ -174,7 +189,7 @@ public class MenuManager : MonoBehaviour
     public void openPauseMenu(CallbackContext callbackContext)
     {
         //Debug.Log((playerInput.currentActionMap == null ? "null" : playerInput.currentActionMap.name) + ": Open pause menu context: " + callbackContext.phase);
-        if(callbackContext.performed)
+        if (callbackContext.performed)
         {
             openPauseMenu();
         }
@@ -183,7 +198,7 @@ public class MenuManager : MonoBehaviour
     public void closePauseMenu(CallbackContext callbackContext)
     {
         //Debug.Log((playerInput.currentActionMap == null ? "null" : playerInput.currentActionMap.name) + ": Close pause menu context: " + callbackContext.phase);
-        if(callbackContext.performed)
+        if (callbackContext.performed)
         {
             closePauseMenu();
         }
@@ -191,9 +206,117 @@ public class MenuManager : MonoBehaviour
 
     public void togglePauseMenu(CallbackContext callbackContext)
     {
-        if(callbackContext.performed)
+        if (callbackContext.performed)
         {
             togglePauseMenu();
         }
     }
+
+    public void ToggleInventory(CallbackContext callback)
+    {
+        if (!callback.performed) { return; }
+        if (menuState == MenuState.inventoryMenu)
+        {
+            closeInventory();
+        }
+        else
+        {
+            openInventory();
+        }
+    }
+
+    public void openInventory()
+    {
+        if (menuState == MenuState.playing)
+        {
+            menuState = MenuState.inventoryMenu;
+            inventoriesManager.EnableMenu();
+            isPaused = true;
+            EventSystem.current.SetSelectedGameObject(pauseMenu.resumeButton.gameObject);
+            priorActionMap = playerInput.currentActionMap.name;
+            playerInput.SwitchCurrentActionMap("UI");
+            Time.timeScale = 0;
+            if (usingMnK)
+            {
+                showMouse();
+            }
+        }
+        else if (menuState == MenuState.pauseMenus)
+        {
+            menuState = MenuState.inventoryMenu;
+            playerInput.SwitchCurrentActionMap("UI");
+            inventoriesManager.EnableMenu();
+            pauseMenu.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("Cant open inventory right now.");
+        }
+    }
+
+    public void closeInventory()
+    {
+        if (menuState == MenuState.inventoryMenu)
+        {
+            isPaused = false;
+            menuState = MenuState.playing;
+            inventoriesManager.DisableMenu();
+            Time.timeScale = 1;
+            playerInput.SwitchCurrentActionMap(priorActionMap);
+            isPaused = false;
+            if (usingMnK && !inMenu)
+            {
+                hideMouse();
+            }
+        }
+        else
+        {
+            Debug.Log("Tried to close the inventory when it was already closed");
+        }
+    }
+
+    public void startDialogue(Dialogue dialogue)
+    {
+        if (menuState == MenuState.playing)
+        {
+            menuState = MenuState.dialogue;
+            dialogueManager.StartDialogue(dialogue);
+            isPaused = true;
+            EventSystem.current.SetSelectedGameObject(pauseMenu.resumeButton.gameObject);
+            priorActionMap = playerInput.currentActionMap.name;
+            //playerInput.SwitchCurrentActionMap("");
+            //Time.timeScale = 0;
+            if (usingMnK)
+            {
+                showMouse();
+            }
+        }
+    }
+
+    public void endDialogue()
+    {
+        if (menuState == MenuState.dialogue)
+        {
+            isPaused = false;
+            menuState = MenuState.playing;
+            //inventoriesManager.DisableMenu();
+            Time.timeScale = 1;
+            playerInput.SwitchCurrentActionMap("Player");
+            isPaused = false;
+            if (usingMnK && !inMenu)
+            {
+                hideMouse();
+            }
+
+        }
+
+    }
+}
+
+public enum MenuState 
+{ 
+    playing,
+    pauseMenus,
+    inventoryMenu,
+    dialogue
 }

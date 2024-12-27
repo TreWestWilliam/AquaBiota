@@ -94,6 +94,7 @@ public class DialogueManager : MonoBehaviour
     {
         inDialogue = false;
         animator.SetBool("IsOpen", false);
+        MenuManager.Instance.endDialogue();
         Debug.Log("Ending conversation");
     }
 }

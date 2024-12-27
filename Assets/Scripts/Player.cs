@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -60,10 +61,26 @@ public class Player : MonoBehaviour
         rigidBody.mass = totalWeight;
     }
 
-    public void openInventory(InventoryItem item)
+    public void openInventory(ItemObject itemObj)
     {
+        var item = itemObj.inventoryItem;
+        InventoryItem newItem = Instantiate(item, inventory.GetItemParent());
+        if (inventory.autoAdd(newItem)) 
+        {
+
+            itemObj.endInteraction(this, true);
+            Debug.Log("Inventory item added successfully");
+            //item.itemObject.endInteraction(this, true);
+        }
+        else 
+        { 
+            // Manual placement here;
+        }
+
+        /* Disabling for demo, I don't know how tihs is supposed to work currently.
         InventoryItem[] items = { item };
         openInventory(items);
+        */
     }
 
     public void openInventory(InventoryItem[] items)
@@ -181,4 +198,6 @@ public class Player : MonoBehaviour
             removeInRangeInteractable(interactable);
         }
     }
+
+    public void SetInventory( Inventory i) { inventory = i; } 
 }

@@ -12,7 +12,7 @@ public class Inventory : MonoBehaviour
 
     public List<InventoryItem> items;
 
-    private InventoryItem[,] itemByCoordinate;
+    [SerializeField] private InventoryItem[,] itemByCoordinate;
 
     [SerializeField] private Image background;
     [SerializeField] private TMP_Text nameText;
@@ -33,7 +33,7 @@ public class Inventory : MonoBehaviour
         initialize();
     }
 
-    private void initialize()
+    public void initialize()
     {
         itemByCoordinate = new InventoryItem[space.size.x, space.size.y];
         foreach(InventoryItem item in items)
@@ -93,6 +93,29 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
+    public bool autoAdd(InventoryItem item) 
+    {
+        Vector2Int size = contents.size;
+
+        for (int x = 0; x<size.x;x++) 
+        { 
+        
+            for (int y = 0; y<size.y;y++) 
+            {
+                if (contents.checkFitAndOverlap(item.itemData.inventoryShape, new Vector2Int(x, y), item.rotation)) 
+                {
+                    return add(item, new Vector2Int(x, y));
+                }
+            }
+
+        }
+        //This is when we cant auto add
+
+        return false;
+    
+    }
+
+
     public void remove(InventoryItem item)
     {
         removeItemFromContents(item);
@@ -104,7 +127,12 @@ public class Inventory : MonoBehaviour
     private void addItemToContents(InventoryItem item)
     {
         Vector2Int[] coordinates = contents.addOtherCoord(item.itemData.inventoryShape, item.position, item.rotation);
-        foreach(Vector2Int coordinate in coordinates)
+        if (itemByCoordinate == null) 
+        {
+            Debug.LogWarning("Something was very wrong here.  Remaking the item by coordinate array");
+            itemByCoordinate = new InventoryItem[space.size.x, space.size.y];   
+        }
+        foreach (Vector2Int coordinate in coordinates)
         {
             itemByCoordinate[coordinate.x, coordinate.y] = item;
         }
@@ -115,6 +143,7 @@ public class Inventory : MonoBehaviour
         if(items.Contains(item))
         {
             Vector2Int[] coordinates = contents.subtractOtherCoord(item.itemData.inventoryShape, item.position, item.rotation);
+            Debug.Log(itemByCoordinate);
             foreach(Vector2Int coordinate in coordinates)
             {
                 itemByCoordinate[coordinate.x, coordinate.y] = null;
@@ -136,4 +165,6 @@ public class Inventory : MonoBehaviour
         }
         return weight;
     }
+
+    public RectTransform GetItemParent() { return itemParent; }
 }

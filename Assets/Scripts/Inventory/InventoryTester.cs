@@ -50,4 +50,17 @@ public class InventoryTester : MonoBehaviour
         InventoryItem newItem = Instantiate(items[itemSelection], itemParent.transform);
         inventoryNavigator.HoldItem(newItem);
     }
+
+    public void AutoAddItem(int itemSelection) 
+    {
+        InventoryItem newItem = Instantiate(items[itemSelection], itemParent.transform);
+        Inventory inv = GameObject.FindAnyObjectByType<Inventory>();
+        if (inv == null) {
+            Debug.LogWarning("Cant find inventory");
+            return; }
+        if (inv.autoAdd(newItem)) 
+        {
+            Debug.Log("added item successfully");
+        }
+    }
 }

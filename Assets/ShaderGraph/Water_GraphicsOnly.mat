@@ -103,10 +103,10 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Depth: 35.2
+    - _Depth: 7.6
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _Displacement: 2
+    - _Displacement: -5.66
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
@@ -114,28 +114,28 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _Normal_Strength: 0.793
+    - _Normal_Strength: 0.051
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 1
+    - _Smoothness: 0.192
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Strength: 0
     - _Surface: 0
-    - _Transparency: 13.6
+    - _Transparency: 6.1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Deep_Water: {r: 0.0025364957, g: 0.12149577, b: 0.5377358, a: 0}
+    - _Deep_Water: {r: 0, g: 0.2196078, b: 1, a: 0.5058824}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Shallow_Water: {r: 0.2520915, g: 0.76910853, b: 0.9716981, a: 0}
+    - _Shallow_Water: {r: 0.5058824, g: 0.78026223, b: 1, a: 0.21176471}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
