@@ -15,13 +15,15 @@ public class TabManager : MonoBehaviour
             tabs.Add(child.name, child.gameObject);
             child.gameObject.SetActive(false);
         }
+        //defaults to camera tab
         activeTab = tabs["CameraTab"];
         activeTab.SetActive(true);
     }
 
     public void switchTab(string name) {
-        activeTab.SetActive(false);
+        GameObject currentTab = activeTab;
         activeTab = tabs[name];
+        currentTab.SetActive(false);
         activeTab.SetActive(true);
     }
 }

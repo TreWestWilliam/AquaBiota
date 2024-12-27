@@ -26,6 +26,8 @@ public class Options : MonoBehaviour
     [SerializeField] private VolumeSetting ambientVolume;
     [SerializeField] private VolumeSetting sfxVolume;
     [SerializeField] private VolumeSetting uiVolume;
+
+    [SerializeField] private GraphicSetting graphicSetting;
     //[SerializeField] private 
 
     private string FilePath = "notloaded";
@@ -45,6 +47,7 @@ public class Options : MonoBehaviour
             _Settings = LoadSettings();
             LoadValues();
             Camera.LoadSettings(_Settings);
+            graphicSetting.loadSettings(_Settings);
         }
         else 
         {
@@ -104,6 +107,8 @@ public class Options : MonoBehaviour
         ambientVolume.loadVolume(ref _Settings);
         sfxVolume.loadVolume(ref _Settings);
         uiVolume.loadVolume(ref _Settings);
+
+        graphicSetting.loadSettings(_Settings);
     }
 
     public void OpenMenu() 
@@ -134,6 +139,9 @@ public class Options : MonoBehaviour
             _Settings.setVolumeVal(uiVolume.name, (int)uiVolume.VolumeSlider.value);
         
         Camera.LoadSettings(_Settings);
+
+        graphicSetting.saveSettings(ref _Settings);
+
         SaveSettings();
     }
     /*
@@ -172,17 +180,9 @@ public struct Settings
     public bool CameraVInverse;
     public bool CameraHInverse;
 
-    //volume settings
-    public bool muteMasterVol;
-    public int masterVolVal;    
-    public bool muteMusicVol;
-    public int musicVolVal;
-    public bool muteAmbientVol;
-    public int ambientVolVal;    
-    public bool muteSfxVol;
-    public int sfxVolVal;
-    public bool muteUiVol;
-    public int UiVolVal;
+    #region Volume Settings
+    public bool muteMasterVol, muteMusicVol, muteAmbientVol, muteSfxVol, muteUiVol;
+    public int masterVolVal, musicVolVal, ambientVolVal, sfxVolVal, UiVolVal;
 
     public int getVolumeVal(string name) {
         switch (name) {
@@ -258,4 +258,9 @@ public struct Settings
                 break;
         }
     }
+    #endregion
+
+    //graphic settings
+    public bool fullscreen, vsync;
+    public int resolutionIndex;
 }
