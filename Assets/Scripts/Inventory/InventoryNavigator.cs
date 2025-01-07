@@ -107,7 +107,13 @@ public class InventoryNavigator : MonoBehaviour
     {
         if (holdingItem)
         {
-            if (!inventory.GetComponent<Inventory>().add(heldItem, currentPosition)) return;
+            if (currentPosition.x < 0)
+            {
+                DropItem(heldItem);
+            }
+
+            // attempts to add item to inventory and returns if unsuccessful
+            else if (!inventory.GetComponent<Inventory>().add(heldItem, currentPosition)) return;
 
             Color imageColor = heldItem.image.color;
             imageColor.a = 1f;
@@ -119,6 +125,7 @@ public class InventoryNavigator : MonoBehaviour
         }
         else
         {
+            if (currentPosition.x < 0) return;
             heldItem = inventory.GetItemByCoordinate(currentPosition);
             if(heldItem == null) return;
             inventory.remove(heldItem);
@@ -153,16 +160,17 @@ public class InventoryNavigator : MonoBehaviour
 
     private void moveCursor(Vector2 input)
     {
-        Vector2Int newPostion = currentPosition;
-        if (input.x > 0.5f && !(newPostion.x + 1 >= size.x)) newPostion.x += 1;
-        else if (input.x < -0.5f && !(newPostion.x - 1 < 0)) newPostion.x -= 1;
+        Vector2Int newPosition = currentPosition;
+        if (input.x > 0.5f && !(newPosition.x + 1 >= size.x)) newPosition.x += 1;
+        else if (input.x < -0.5f && !(newPosition.x - 1 < -1)) newPosition.x -= 1;
 
-        if (input.y < -0.5f && !(newPostion.y + 1 >= size.y)) newPostion.y += 1;
-        else if (input.y > 0.5f && !(newPostion.y - 1 < 0)) newPostion.y -= 1;
+        if (input.y < -0.5f && !(newPosition.y + 1 >= size.y)) newPosition.y += 1;
+        else if (input.y > 0.5f && !(newPosition.y - 1 < 0)) newPosition.y -= 1;
 
-        if(newPostion != currentPosition)
+        if(newPosition != currentPosition)
         {
-            currentPosition = newPostion;
+            currentPosition = newPosition;
+            if (currentPosition.x == -1) currentPosition.y = 0;
             UpdateSelectionBox();
         }
     }
@@ -189,5 +197,13 @@ public class InventoryNavigator : MonoBehaviour
             selectionBox.transform.localPosition = new Vector3((currentPosition.x - (size.x / 2f) + 0.5f) * InventoriesManager.instance.gridSize,
                 -(currentPosition.y - (size.y / 2f) + 0.5f) * InventoriesManager.instance.gridSize, 0f);
         }
+    }
+
+    private void DropItem(InventoryItem item)
+    {
+        // item needs to be dropped in world next to player
+
+        // deletes inventory version of item
+        Destroy(heldItem.gameObject);
     }
 }
